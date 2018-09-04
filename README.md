@@ -1,4 +1,9 @@
 # Trycatch
-Trycatch is an open source with no special sdks monitoring, notifying, aggregating exception for coders.
+Trycatch is an open source with no special sdks monitoring, notifying, aggregating application exception for coders.
 ## Architecture
-Trycatch consists of four parts: backend server, frontend web UIs, mobile app, diaper(custome flume HttpSink to monitor exception)
+Trycatch consists of four parts:
+
+ - [backend server](https://github.com/danceyoung/trycatch-server)
+ - [frontend web app](https://github.com/danceyoung/trycatch-intereactiveUIs)
+ - mobile app
+ - [diaper](https://github.com/danceyoung/trycatch-flumediaper)(custom flume HttpSink to monitor exception)
