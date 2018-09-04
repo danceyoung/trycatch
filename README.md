@@ -1,5 +1,5 @@
 # Trycatch
-Trycatch is an open source with no special sdks monitoring, notifying, aggregating application exception for coders.
+Trycatch is an open source with no special SDKs monitoring, notifying and aggregating application exception for coders.
 ## Architecture
 Trycatch consists of four parts:
 
