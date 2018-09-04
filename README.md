@@ -9,3 +9,15 @@ Trycatch consists of four parts:
  - [diaper](https://github.com/danceyoung/trycatch-flumediaper)(custom flume HttpSink to monitor exception)
  
  ![architecture](https://github.com/danceyoung/trycatch/blob/master/resource/architecture.png?raw=true)
+ ### backend server
+ Implemented by golang, providing APIs for the other parts, and reading/writing datas from/into mysql database.
+ ### frontend web app
+A system platform provides intereactive user interface for administrator or normal user.
+ - register account
+ - manage your project. Add, edit and delete project/project member and so on
+ - browse your or user allowed to browse for yourself activity and report
+ - ...
+ ### mobile app
+ Another way to browse activity and report by real-time through Push Notification Server.
+ ### diaper
+ A customed Flume HttpSink
