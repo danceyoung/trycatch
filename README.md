@@ -20,4 +20,4 @@ Implemented by reactjs, a system platform provides intereactive user interface f
  ### mobile app
  Another way to browse activity and report by real-time through Push Notification Server, supporting iOS and Android mobile.
  ### diaper
- A customed Flume HttpSink
+ A flume sink customed Flume HttpSink
