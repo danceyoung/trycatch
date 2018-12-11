@@ -4,7 +4,7 @@ Real-time with no special SDKs monitoring, notifying and aggregating application
 Trycatch consists of four parts:
 
  - [backend server](https://github.com/danceyoung/trycatch-server)
- - [frontend web app](https://github.com/danceyoung/trycatch-intereactiveUIs)http://danceyoung.github.io/trycatchfinally/
+ - [frontend web app](https://github.com/danceyoung/trycatch-intereactiveUIs)  githubpages:http://danceyoung.github.io/trycatchfinally/
  - mobile app
  - [diaper](https://github.com/danceyoung/trycatch-flumediaper)(custom flume HttpSink to monitor exception)
  
