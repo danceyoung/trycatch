@@ -1,0 +1,252 @@
+/*
+ * @Author: Young
+ * DSHARP
+ * @flow 
+ * @Date: 2018-05-31 16:26:22 
+ * @Last Modified by: Young
+ * @Last Modified time: 2018-10-26 17:35:02
+ */
+
+.superDiv {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+}
+
+.rootDiv {
+  --normal-color: #F5F7F9;
+  --theme-bluecolor: #3B67BC;
+  --theme-yellowcolor: #FFD35B;
+  display: flex;
+  justify-content: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 18;
+  margin-top: 20px;
+}
+
+.leftDiv {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.rightDiv {
+  display: flex;
+  flex-direction: column;
+  width: 670px;
+  /* background-color: bisque; */
+  margin-left: 30px;
+}
+
+.projectDiv {
+  /* background-color: lightblue; */
+  height: 100px;
+  /* border-color: lightgray; */
+  /* border-width: 1px; */
+  /* border-style: solid; */
+  margin-bottom: 15px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--normal-color);
+}
+
+.projectHeaderDiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* background-color: #FFD35B; */
+  height: 50px;
+}
+
+.newProjectLink {
+  background-color: var(--theme-bluecolor);
+  color: white;
+  height: 30px;
+  width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+}
+
+.projectTitleDiv {
+  display: flex;
+  height: 30px;
+  align-items: center;
+  margin-left: 5px;
+  font-size: 15px;
+}
+
+.projectOtherInfoDiv {
+  display: flex;
+  height: 25px;
+  align-items: center;
+  margin-left: 5px;
+  margin-top: 45px;
+  color: gray;
+  font-size: 12px;
+}
+
+.sourceCode {
+  margin-right: 20px;
+}
+
+.sourceCodeImg {
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+}
+
+.settingImg {
+  width: 13px;
+  height: 13px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.settingDiv {
+  display: flex;
+  /* background-color: #005CD0; */
+  flex: 1;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.chartImg {
+  height: 40px;
+  width: 150px;
+}
+
+.tabDiv {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  /* border-style: solid;
+  border-width: 1px;
+  border-color: gray; */
+  width: 200px;
+  justify-content: space-between;
+}
+
+.tabTextDiv {
+  height: 30px;
+  /* color: white; */
+  /* background-color:var(--theme-bluecolor); */
+  width: 80px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  /* border-radius: 3px; */
+  border-style: solid;
+  border-width: 0px;
+  border-bottom-width: 2.5px;
+  border-bottom-color: var(--theme-yellowcolor);
+  cursor: pointer;
+}
+
+.tabLink {
+  text-decoration: none;
+  color: black;
+}
+
+.bugContentLink {
+  text-decoration: none;
+  color: #4E555E;
+}
+
+.debuggedDiv {
+  color: #005CD0;
+  display: flex;
+  width: 90%;
+  flex-wrap: wrap;
+  font-size: 13px;
+}
+
+.debuggedTextDiv {
+  background-color: #EFF7FF;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  border-radius: 2px;
+  cursor: pointer;
+  min-width: 70px;
+}
+
+.bugDiv {
+  display: flex;
+  flex-direction: column;
+  color: #4E555E;
+  margin-top: 20px;
+  width: 800px;
+}
+
+.bugAuthorDiv {
+  display: flex;
+  align-items: center;
+  color: black;
+  font-size: 13px;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  border-radius: 3px;
+}
+
+.bugContentDiv {
+  display: flex;
+  flex-wrap: wrap;
+  word-wrap: break-word;
+  word-break: break-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 150px;
+  width: 75%;
+  border-style: solid;
+  border-width: 1px;
+  border-color: lightgray;
+  border-radius: 5px;
+  margin-left: 40px;
+  margin-top: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.newProjectModalDiv {
+  width: 50%;
+  height: 500px;
+  background-color: red;
+}
+
+.activityRootDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+.nextDiv {
+  margin-bottom: 30px;
+  margin-top: 30px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.nextTextDiv {
+  border-width: 1px;
+  border-color: var(--theme-bluecolor);
+  border-radius: 3px;
+  width: 100px;
+  height: 30px;
+  border-style: solid;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin-top: 10px;
+  cursor: pointer;
+}

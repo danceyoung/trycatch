@@ -1,0 +1,41 @@
+/*
+ * @Author: Young
+ * DSHARP
+ * @flow 
+ * @Date: 2018-09-19 10:59:35 
+ * @Last Modified by: Young
+ * @Last Modified time: 2018-09-19 14:50:02
+ */
+
+.ttHeader {
+  height: 60px;
+  background-color: #212529;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.headerCenterDiv {
+  display: flex;
+  align-items: center;
+  width: 1000px;
+}
+
+.ttHeader-logo {
+  width: 40px;
+  height: 40px;
+}
+
+.accountDiv {
+  display: flex;
+  flex: 1;
+  /* background-color: red; */
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.accountImg {
+  width: 40px;
+  height: 40px;
+}

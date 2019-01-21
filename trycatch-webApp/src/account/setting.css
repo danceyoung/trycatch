@@ -1,0 +1,30 @@
+/*
+ * @Author: Young
+ * DSHARP
+ * @flow 
+ * @Date: 2018-10-26 09:31:17 
+ * @Last Modified by: Young
+ * @Last Modified time: 2018-10-26 10:06:47
+ */
+
+.passwordInput {
+  width: 200px;
+  height: 20px;
+}
+
+.passwordLabel {
+  width: 40px;
+}
+
+.changePasswordDiv {
+  width: 200px;
+  height: 30px;
+  margin-left: 40px;
+  color: white;
+  background-color: #3B67BC;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  cursor: pointer;
+}

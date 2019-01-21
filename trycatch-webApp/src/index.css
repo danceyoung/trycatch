@@ -1,0 +1,90 @@
+body {
+  font: 14px "Century Gothic", Futura, sans-serif;
+  margin: 0px auto;
+}
+
+.rootView {
+  display: flex;
+  flex-direction: column;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.ttHomeRootDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ttHomeContent1 {
+  display: flex;
+  height: 600px;
+  width: 100%;
+  background-color: #262B30;
+  justify-content: center;
+}
+
+.ttHomeContent1-left {
+  width: 600px;
+  color: #A8AAAC;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 20px;
+}
+
+.ttHomeContent1-left-p {
+  font-size: 40px;
+  color: white;
+}
+
+.ttHomeContent1-right {
+  height: 400px;
+  width: 400px;
+  background-color: #fff;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+.ttContent1-right-inputdiv {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.ttContent1-right-input {
+  height: 25px;
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.ttContent1-right-signin {
+  height: 35px;
+  width: 80%;
+  color: white;
+  font-size: 15px;
+  background-color: #3B67BC;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  text-decoration: none;
+}
+
+.ttContent2 {
+  height: 400px;
+  width: 1000px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 50px;
+}
+
+.ttContent2-div {
+  background-color: #A8AAAC;
+  width: 300px;
+  text-align: center;
+  border-radius: 5px;
+}

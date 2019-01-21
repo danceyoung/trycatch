@@ -1,0 +1,151 @@
+/*
+ * @Author: Young
+ * DSHARP
+ * @flow 
+ * @Date: 2018-06-06 14:34:10 
+ * @Last Modified by: Young
+ * @Last Modified time: 2018-07-20 15:58:43
+ */
+
+:root {
+  --email-width: 230px;
+  --alias-width: 120px;
+  --email-height: 35px;
+}
+
+.npRootDiv {
+  width: 1000px;
+  background-color: white;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 2px;
+}
+
+.npSaveProjectAndMemberDiv {
+  width: 480px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  background-color: #3B67BC;
+  cursor: pointer;
+  border-radius: 3px;
+  margin-top: 40px;
+  color: white;
+}
+
+.npHeaderDiv {
+  width: 100%;
+  height: 40px;
+  /* background-color: aliceblue; */
+  display: flex;
+  align-items: center;
+}
+
+.npHeaderRightDiv {
+  display: flex;
+  justify-content: center;
+  height: 40px;
+  flex: 1;
+}
+
+.npLabelInputDiv {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.npLabel {
+  width: 80px;
+}
+
+.npInput {
+  height: 25px;
+  width: 400px;
+  font-size: 14px;
+  display: flex;
+}
+
+.npAddMemberEmailInput {
+  width: var(--email-width);
+  height: 25px;
+  font-size: 14px;
+}
+
+.npAddMemberAliasInput {
+  width: var(--alias-width);
+  height: 25px;
+  font-size: 14px;
+  margin-left: 10px;
+  /* margin-right: 17px; */
+}
+
+.npMemberRowDiv {
+  width: 480px;
+  height: var(--email-height);
+  display: flex;
+  align-items: center;
+  background-color: lightgray;
+  margin-top: 10px;
+  border-radius: 3px;
+}
+
+.npMemberEmailDiv {
+  width: var(--email-width);
+  height: var(--email-height);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 5px;
+}
+
+.npMemberAliasDiv {
+  width: var(--alias-width);
+  height: var(--email-height);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 5px;
+}
+
+.npMemberActionDiv {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 1;
+}
+
+.npMemberActionImg {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.npReceiveListDiv {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.npReceiveListItemDiv {
+  display: flex;
+  align-items: center;
+}
+
+.npReceiveListItemTitleDiv{
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  /* font-weight: bold; */
+  /* font-size: 16px; */
+  margin-bottom: 10px;
+}
+
+.npLeftArrowImg{
+  width: 40px;
+  height: 40px;
+  margin-left: -20px;
+}
