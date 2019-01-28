@@ -1,6 +1,8 @@
 > Written with [StackEdit](https://stackedit.io/).
 # Trycatch
 Real-time with no special SDKs monitoring, notifying and aggregating application exception for coders.
+## Demo
+[enter link description here](https://github.com/danceyoung/trycatch/blob/master/resource/demo.mp4?raw=true)
 ## Architecture
 Trycatch consists of four parts:
 
