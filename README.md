@@ -26,3 +26,6 @@ Implemented by reactjs, a system platform provides intereactive user interface f
  Another way to browse activity and report by real-time through Push Notification Server, supporting iOS and Android mobile.
  ### diaper
  Aggregating exception log data by [Taildir Source](http://flume.apache.org/releases/content/1.9.0/FlumeUserGuide.html#taildir-source) of Apache Flume, and sending log data as a POST body to BackendServer by [HTTP Sink](http://flume.apache.org/releases/content/1.9.0/FlumeUserGuide.html#http-sink) of Apache Flume.
+
+## License
+Trycatch is [MIT licensed](https://github.com/danceyoung/trycatch/blob/master/LICENSE)
