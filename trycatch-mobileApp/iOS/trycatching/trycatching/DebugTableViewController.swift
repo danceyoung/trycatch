@@ -64,9 +64,12 @@ class DebugTableViewController: UITableViewController, SelectMultipleButtonsDele
                 let msgDic = responseDic["msg"] as! NSDictionary
                 let code = msgDic["code"] as! Int
                 if code == 0 || code == Constant.NOMOREDATACODE {
-                    self.bugs = self.bugs + (responseDic["bugs"] as! [Any])
-                    self.tableView.reloadData()
-                    self.fetchPage = self.fetchPage + 1
+                    let bugsDic = responseDic["bugs"]
+                    if !(bugsDic is NSNull) {
+                        self.bugs = self.bugs + ((bugsDic as? [Any])!)
+                        self.tableView.reloadData()
+                        self.fetchPage = self.fetchPage + 1
+                    }
                 }else {
                     
                 }
