@@ -1,6 +1,6 @@
 {
-  "homepage": "https://danceyoung.github.io/trycatch-intereactiveUIs/",
-  "name": "react-app-one",
+  "homepage": "http://danceyoung.github.io/trycatchfinally/",
+  "name": "trycatch",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
