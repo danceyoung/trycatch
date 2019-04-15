@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0F14C968713DECC0E13D48C5 /* Pods_trycatchingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5500588F2978D0EB6BFBD2A3 /* Pods_trycatchingTests.framework */; };
 		56692AF0748361C170BC3FA4 /* Pods_trycatchingUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5715CAED77853044A8FA00A3 /* Pods_trycatchingUITests.framework */; };
+		6F0338722251BABE00FD7254 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0338712251BABE00FD7254 /* MoreViewController.swift */; };
 		6F065AA021D212C200428B2C /* BugDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F065A9F21D212C200428B2C /* BugDetailViewController.swift */; };
 		6F1FA4F921CB7239006B8E9B /* PBugTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1FA4F721CB7239006B8E9B /* PBugTableViewCell.swift */; };
 		6F1FA4FA21CB7239006B8E9B /* PBugTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F1FA4F821CB7239006B8E9B /* PBugTableViewCell.xib */; };
@@ -16,6 +17,14 @@
 		6F29CAC021BA4DFA008C5861 /* DebugTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F29CABF21BA4DFA008C5861 /* DebugTableViewController.swift */; };
 		6F3F691E21C1FE5E008A779C /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3F691D21C1FE5E008A779C /* Network.swift */; };
 		6F50988521C72171006FEB62 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F50988421C72171006FEB62 /* Constant.swift */; };
+		6F8C7EA8225B4F450077521B /* LargeValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8C7EA7225B4F450077521B /* LargeValueFormatter.swift */; };
+		6F91224322379F4400475B2A /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F91224222379F4400475B2A /* CoreTelephony.framework */; };
+		6F91224522379F5200475B2A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F91224422379F5200475B2A /* SystemConfiguration.framework */; };
+		6F91224722379F5D00475B2A /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F91224622379F5D00475B2A /* UserNotifications.framework */; };
+		6F91224922379F7A00475B2A /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F91224822379F7A00475B2A /* libz.tbd */; };
+		6F91224B22379F8800475B2A /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F91224A22379F8800475B2A /* libsqlite3.0.tbd */; };
+		6F91224D22379FC500475B2A /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F91224C22379FC500475B2A /* libXG-SDK.a */; };
+		6F9122672237AE9300475B2A /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F9122612237AE9300475B2A /* libXG-SDK.a */; };
 		6FE189D121927EEB00A64EC5 /* ProjectCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE189CF21927EEB00A64EC5 /* ProjectCellTableViewCell.swift */; };
 		6FE189D221927EEB00A64EC5 /* ProjectCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FE189D021927EEB00A64EC5 /* ProjectCellTableViewCell.xib */; };
 		6FE189D521942DB300A64EC5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE189D321942DB300A64EC5 /* LoginViewController.swift */; };
@@ -55,6 +64,7 @@
 		4F8824D04E79C03DEA5DE71C /* Pods_trycatching.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_trycatching.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5500588F2978D0EB6BFBD2A3 /* Pods_trycatchingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_trycatchingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5715CAED77853044A8FA00A3 /* Pods_trycatchingUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_trycatchingUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F0338712251BABE00FD7254 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		6F065A9F21D212C200428B2C /* BugDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BugDetailViewController.swift; sourceTree = "<group>"; };
 		6F1FA4F721CB7239006B8E9B /* PBugTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBugTableViewCell.swift; sourceTree = "<group>"; };
 		6F1FA4F821CB7239006B8E9B /* PBugTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PBugTableViewCell.xib; sourceTree = "<group>"; };
@@ -62,6 +72,17 @@
 		6F29CABF21BA4DFA008C5861 /* DebugTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugTableViewController.swift; sourceTree = "<group>"; };
 		6F3F691D21C1FE5E008A779C /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		6F50988421C72171006FEB62 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		6F8C7EA7225B4F450077521B /* LargeValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeValueFormatter.swift; sourceTree = "<group>"; };
+		6F912241223798A100475B2A /* trycatching.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = trycatching.entitlements; sourceTree = "<group>"; };
+		6F91224222379F4400475B2A /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		6F91224422379F5200475B2A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		6F91224622379F5D00475B2A /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		6F91224822379F7A00475B2A /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		6F91224A22379F8800475B2A /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		6F91224C22379FC500475B2A /* libXG-SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libXG-SDK.a"; path = "../../../../../Downloads/Xg-Push-SDK-iOS-3.3.5/demo/sdk/libXG-SDK.a"; sourceTree = "<group>"; };
+		6F91225D2237AA2100475B2A /* TryCatching-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TryCatching-Bridging-Header.h"; sourceTree = "<group>"; };
+		6F91225F2237AE9300475B2A /* XGPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGPush.h; sourceTree = "<group>"; };
+		6F9122612237AE9300475B2A /* libXG-SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libXG-SDK.a"; sourceTree = "<group>"; };
 		6FE189CF21927EEB00A64EC5 /* ProjectCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCellTableViewCell.swift; sourceTree = "<group>"; };
 		6FE189D021927EEB00A64EC5 /* ProjectCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectCellTableViewCell.xib; sourceTree = "<group>"; };
 		6FE189D321942DB300A64EC5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -92,7 +113,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F91224D22379FC500475B2A /* libXG-SDK.a in Frameworks */,
+				6F91224B22379F8800475B2A /* libsqlite3.0.tbd in Frameworks */,
+				6F91224922379F7A00475B2A /* libz.tbd in Frameworks */,
+				6F91224722379F5D00475B2A /* UserNotifications.framework in Frameworks */,
+				6F91224522379F5200475B2A /* SystemConfiguration.framework in Frameworks */,
+				6F91224322379F4400475B2A /* CoreTelephony.framework in Frameworks */,
 				C6950EB82465517190741EF2 /* Pods_trycatching.framework in Frameworks */,
+				6F9122672237AE9300475B2A /* libXG-SDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,9 +164,20 @@
 			path = net;
 			sourceTree = "<group>";
 		};
+		6F91225E2237AE9300475B2A /* sdk */ = {
+			isa = PBXGroup;
+			children = (
+				6F91225F2237AE9300475B2A /* XGPush.h */,
+				6F9122612237AE9300475B2A /* libXG-SDK.a */,
+			);
+			path = sdk;
+			sourceTree = "<group>";
+		};
 		6FFC1EF4218FE33E00062E06 = {
 			isa = PBXGroup;
 			children = (
+				6F91225E2237AE9300475B2A /* sdk */,
+				6F91225D2237AA2100475B2A /* TryCatching-Bridging-Header.h */,
 				6FFC1EFF218FE33E00062E06 /* trycatching */,
 				6FFC1F16218FE34100062E06 /* trycatchingTests */,
 				6FFC1F21218FE34100062E06 /* trycatchingUITests */,
@@ -161,6 +200,7 @@
 		6FFC1EFF218FE33E00062E06 /* trycatching */ = {
 			isa = PBXGroup;
 			children = (
+				6F912241223798A100475B2A /* trycatching.entitlements */,
 				6F3F691C21C1FE20008A779C /* net */,
 				6FFC1F00218FE33E00062E06 /* AppDelegate.swift */,
 				6FFC1F02218FE33E00062E06 /* MasterViewController.swift */,
@@ -180,6 +220,8 @@
 				6F1FA4F721CB7239006B8E9B /* PBugTableViewCell.swift */,
 				6F1FA4F821CB7239006B8E9B /* PBugTableViewCell.xib */,
 				6F065A9F21D212C200428B2C /* BugDetailViewController.swift */,
+				6F0338712251BABE00FD7254 /* MoreViewController.swift */,
+				6F8C7EA7225B4F450077521B /* LargeValueFormatter.swift */,
 			);
 			path = trycatching;
 			sourceTree = "<group>";
@@ -205,6 +247,12 @@
 		80F81C6E4417023BCEC49649 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6F91224C22379FC500475B2A /* libXG-SDK.a */,
+				6F91224A22379F8800475B2A /* libsqlite3.0.tbd */,
+				6F91224822379F7A00475B2A /* libz.tbd */,
+				6F91224622379F5D00475B2A /* UserNotifications.framework */,
+				6F91224422379F5200475B2A /* SystemConfiguration.framework */,
+				6F91224222379F4400475B2A /* CoreTelephony.framework */,
 				4F8824D04E79C03DEA5DE71C /* Pods_trycatching.framework */,
 				5500588F2978D0EB6BFBD2A3 /* Pods_trycatchingTests.framework */,
 				5715CAED77853044A8FA00A3 /* Pods_trycatchingUITests.framework */,
@@ -284,6 +332,14 @@
 				TargetAttributes = {
 					6FFC1EFC218FE33E00062E06 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					6FFC1F12218FE34100062E06 = {
 						CreatedOnToolsVersion = 10.1;
@@ -371,11 +427,13 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-trycatching/Pods-trycatching-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/selectmultiplebuttons/selectmultiplebuttons.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/selectmultiplebuttons.framework",
 			);
@@ -428,10 +486,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F065AA021D212C200428B2C /* BugDetailViewController.swift in Sources */,
+				6F0338722251BABE00FD7254 /* MoreViewController.swift in Sources */,
 				6F29CAC021BA4DFA008C5861 /* DebugTableViewController.swift in Sources */,
 				6F29CABE21BA4817008C5861 /* ProjectTableViewController.swift in Sources */,
 				6F1FA4F921CB7239006B8E9B /* PBugTableViewCell.swift in Sources */,
 				6FE9B0F521C3961000CC4D49 /* Utils.swift in Sources */,
+				6F8C7EA8225B4F450077521B /* LargeValueFormatter.swift in Sources */,
 				6F3F691E21C1FE5E008A779C /* Network.swift in Sources */,
 				6FFC1F05218FE33E00062E06 /* DetailViewController.swift in Sources */,
 				6FFC1F03218FE33E00062E06 /* MasterViewController.swift in Sources */,
@@ -614,6 +674,7 @@
 			baseConfigurationReference = E92EC719750FAF789E89D6AD /* Pods-trycatching.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = trycatching/trycatching.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S2967W4UUP;
 				INFOPLIST_FILE = trycatching/Info.plist;
@@ -621,8 +682,25 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/sdk",
+					"$(PROJECT_DIR)/sdk/extesion",
+					"$(PROJECT_DIR)/sdk/idfa",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"CryptoSwift\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"selectmultiplebuttons\"",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.young.trycatching;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/young/young/biz/github/trycatch/trycatch-mobileApp/ios/trycatching/TryCatching-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -633,6 +711,7 @@
 			baseConfigurationReference = D9D84223101ADB3369884348 /* Pods-trycatching.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = trycatching/trycatching.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S2967W4UUP;
 				INFOPLIST_FILE = trycatching/Info.plist;
@@ -640,8 +719,25 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/sdk",
+					"$(PROJECT_DIR)/sdk/extesion",
+					"$(PROJECT_DIR)/sdk/idfa",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"CryptoSwift\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"selectmultiplebuttons\"",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.young.trycatching;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/young/young/biz/github/trycatch/trycatch-mobileApp/ios/trycatching/TryCatching-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
