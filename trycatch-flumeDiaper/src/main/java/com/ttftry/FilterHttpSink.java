@@ -133,7 +133,7 @@ public class FilterHttpSink extends AbstractSink implements Configurable {
     /**
      * only includes ttt_token with in per line
      */
-    private static final String onlyIncludesContent = "ttf_token";
+    private static final String onlyIncludesContent = "ttf_access_token";
 
 
     @Override
