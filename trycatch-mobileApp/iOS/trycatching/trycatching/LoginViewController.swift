@@ -26,8 +26,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 self.activityIndicator.stopAnimating()
                 let msgDic = responseDic["msg"] as! NSDictionary
                 if (msgDic["code"] as! Int) == 0 {
-                UserDefaults.standard.set(responseDic["uid"], forKey: Constant.TTFUID)
-                    (UIApplication.shared.delegate as! AppDelegate).setRootViewController()
+                    let dtStr = XGPushTokenManager.default().deviceTokenString
+                    if  dtStr != nil {
+                        Network.shared.post(body: ["uid": responseDic["uid"]!, "account_name": self.emailTextField.text!, "device_token": dtStr!], path: "apns/devicetoken", callback: { (resDic) in
+                            print(resDic)
+                        })
+                    }
+                    UserDefaults.standard.set(responseDic["uid"], forKey: Constant.TTFUID)
+                    (UIApplication.shared.delegate as! AppDelegate).setRootViewController(flag: 1)
                 }else{
                     self.emailTextField.isEnabled = true
                     self.passwordTextField.isEnabled = true
