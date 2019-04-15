@@ -12,6 +12,15 @@ class ProjectTableViewController: UITableViewController {
     var objects = [Any]()
     var selectedPId = ""
 
+    
+    @objc func appWillEnterForgroundEvent() {
+        pullProjects()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,7 +31,10 @@ class ProjectTableViewController: UITableViewController {
 
         self.refreshControl?.addTarget(self, action: #selector(pullProjects), for: .valueChanged)
         refreshControl?.beginRefreshing()
-        pullProjects()
+
+        NotificationCenter.default.addObserver(self, selector: #selector(appWillEnterForgroundEvent), name: UIApplication.willEnterForegroundNotification, object: nil)
+        
+        //        pullProjects()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -30,17 +42,60 @@ class ProjectTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.pullProjects()
+    }
+    
+    
+    
+    func pullBugsChartData() {
+        objects.forEach { (project) in
+            let dicProject = project as! NSDictionary
+            let tempUid = UserDefaults.standard.string(forKey: Constant.TTFUID)!
+            let tempProjectId = dicProject["project_id"] as! String
+            Network.shared.post(body: ["uid" : tempUid, "project_id" : tempProjectId], path: "project/receivefromlist") { (responseDic) in
+                let msgDic = responseDic["msg"] as! NSDictionary
+                if msgDic["code"] as! Int == 0 {
+                    let debuggers = responseDic["receive_from_list"] as! [NSDictionary]
+                    let uids = debuggers.map {$0["user_id"]} as! [String]
+                    Network.shared.post(body: ["uid": tempUid, "project_id":tempProjectId, "debugger_ids": uids], path: "project/bugsChart", callback: { (responseDic) in
+                        let msgDic = responseDic["msg"] as! NSDictionary
+                        if msgDic["code"] as! Int == 0 {
+                           dicProject.setValue(responseDic["chart"], forKey: "chart")
+                            DispatchQueue.main.async {
+                                self.tableView.reloadData()
+                            }
+//                            print("data after fetching chartdatas ", project)
+                        }
+                    })
+                    
+                    
+                }else {
+                    
+                }
+            }
+        }
+        
+    }
     
     @objc func pullProjects() {
+        UIApplication.shared.applicationIconBadgeNumber = 0
+        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+        
         Network.shared.post(body: ["uid":UserDefaults.standard.string(forKey: Constant.TTFUID)!], path: "project/list") { (responseDic) in
             print("I retrived data is \(responseDic)")
-            let projectsArray = (responseDic["projects"]! as! NSArray)
-            self.objects = projectsArray as! [Any]
+            let msgDic = responseDic["msg"] as? NSDictionary
+            if msgDic?["code"] as? Int == 0 {
+                let projectsArray = (responseDic["projects"]! as! NSArray)
+                self.objects = projectsArray as! [Any]
+                self.pullBugsChartData()
+                DispatchQueue.main.async(execute: {
+                    self.tableView.reloadData()
+                    self.refreshControl?.endRefreshing()
+                })
+            }
             
-            DispatchQueue.main.async(execute: {
-                self.tableView.reloadData()
-                self.refreshControl?.endRefreshing()
-            })
         }
     }
     
@@ -49,6 +104,13 @@ class ProjectTableViewController: UITableViewController {
         if segue.identifier == "seguedebugtableviewcontroller" {
             let debugVC = segue.destination as! DebugTableViewController
             debugVC.uidProId=(UserDefaults.standard.string(forKey: Constant.TTFUID)!, selectedPId)
+        }
+        switch segue.identifier {
+        case "seguedebugtableviewcontroller":
+            let debugVC = segue.destination as! DebugTableViewController
+            debugVC.uidProId=(UserDefaults.standard.string(forKey: Constant.TTFUID)!, selectedPId)
+        default: break
+            
         }
     }
 
@@ -64,7 +126,7 @@ class ProjectTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100.00
+        return 200.00
     }
 
     
@@ -77,7 +139,7 @@ class ProjectTableViewController: UITableViewController {
         cell.projectNameLabel.text = object["project_name"] as? String
         cell.codeLabel.text = object["source_code"] as? String
         cell.memberLabel.text = String(object["members"] as! Int)
-
+        cell.setChartData(data: object["chart"] as? Array ?? [Int]())
         return cell
     }
     
