@@ -1,8 +1,11 @@
 > Written with [StackEdit](https://stackedit.io/).
 # Trycatch
 Real-time with no special SDKs monitoring, notifying and aggregating application exception for coders.
+GitHub Page Website of TryCatch http://danceyoung.github.io/trycatchfinally/
 ## Demo
-[enter link description here](https://github.com/danceyoung/trycatch/blob/master/resource/demo.mp4?raw=true)
+[The demo video from Youku, please click me.](http://v.youku.com/v_show/id_XNDAzNTM2MDczNg==.html?sharekey=dac00b25c3019b42c71384f2b5a9bf8b0) 
+![enter image description here](https://github.com/danceyoung/trycatch/blob/master/resource/cover.png?raw=true)
+
 ## Architecture
 Trycatch consists of four parts:
 
@@ -24,3 +27,6 @@ Implemented by reactjs, a system platform provides intereactive user interface f
  Another way to browse activity and report by real-time through Push Notification Server, supporting iOS and Android mobile.
  ### diaper
  Aggregating exception log data by [Taildir Source](http://flume.apache.org/releases/content/1.9.0/FlumeUserGuide.html#taildir-source) of Apache Flume, and sending log data as a POST body to BackendServer by [HTTP Sink](http://flume.apache.org/releases/content/1.9.0/FlumeUserGuide.html#http-sink) of Apache Flume.
+
+## License
+Trycatch is [MIT licensed](https://github.com/danceyoung/trycatch/blob/master/LICENSE)
