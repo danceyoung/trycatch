@@ -4,12 +4,13 @@
  * @flow 
  * @Date: 2018-09-17 12:09:33 
  * @Last Modified by: Young
- * @Last Modified time: 2018-10-26 16:09:25
+ * @Last Modified time: 2019-04-17 11:13:53
  */
 import React from "react";
 import "./setting.css";
 import NetClient from "../network/netclient";
 import md5 from "md5";
+import { Link } from "react-router-dom";
 
 export default class Setting extends React.Component {
   constructor(props) {
@@ -37,11 +38,11 @@ export default class Setting extends React.Component {
         }}
         style={{
           justifyContent: "center",
-          alignItems: "center",
+          // alignItems: "center",
           display: "flex",
           flex: 1,
           width: "100%",
-          height: "100%",
+          height: "auto",
           position: "absolute",
           top: 0,
           left: 0,
@@ -56,7 +57,8 @@ export default class Setting extends React.Component {
               display: "flex",
               justifyContent: "flex-end",
               width: 1000,
-              height: "100%"
+              height: "auto",
+              // backgroundColor: "red"
             }
             // backgroundColor: "red"
           }
@@ -67,7 +69,7 @@ export default class Setting extends React.Component {
               {
                 display: "flex",
                 width: 300,
-                height: 1000,
+                height: 400,
                 backgroundColor: "white",
                 marginTop: 60,
                 flexDirection: "column",
@@ -109,7 +111,11 @@ export default class Setting extends React.Component {
               />
             </div>
             <div
-              style={{ display: "flex", alignItems: "center", marginTop: 10 }}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                marginTop: 10
+              }}
             >
               <div className="passwordLabel">New</div>
               <input
@@ -130,6 +136,16 @@ export default class Setting extends React.Component {
             >
               Change
             </div>
+            <Link 
+            onClick={(event)=>{sessionStorage.removeItem(global.tt_constant.UID)}}
+             to="/">
+              <div
+                className="changePasswordDiv"
+                style={{ backgroundColor: "red", marginTop: 60 }}
+              >
+                logout
+              </div>
+            </Link>
           </div>
         </div>
       </div>
