@@ -4,7 +4,7 @@
  * @flow 
  * @Date: 2018-09-19 10:51:57 
  * @Last Modified by: Young
- * @Last Modified time: 2018-10-26 16:07:42
+ * @Last Modified time: 2019-04-17 14:04:32
  */
 import React from "react";
 import "./header.css";
@@ -50,7 +50,14 @@ export default class Header extends React.Component {
     return (
       <div className="ttHeader">
         <div className="headerCenterDiv">
-          <Link to="/">
+          <Link
+            to={
+              sessionStorage.getItem(global.tt_constant.UID) === null
+                ? "/"
+                : "/dashboard/" +
+                  sessionStorage.getItem(global.tt_constant.UID)
+            }
+          >
             <img className="ttHeader-logo" src={logoImg} alt="" />
           </Link>
           <div className="accountDiv">
@@ -63,7 +70,12 @@ export default class Header extends React.Component {
               to={`/accountsetting`}
               style={{ visibility: this.state.settingVisible }}
             >
-              <img className="accountImg" src={accountImg} alt="" style={{}} />
+              <img
+                className="accountImg"
+                src={accountImg}
+                alt=""
+                style={{ width: 15, height: 15 }}
+              />
             </Link>
           </div>
         </div>
