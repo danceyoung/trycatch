@@ -4,7 +4,7 @@
  * @flow 
  * @Date: 2018-06-21 17:10:49 
  * @Last Modified by: Young
- * @Last Modified time: 2019-04-16 11:40:30
+ * @Last Modified time: 2019-04-17 10:25:37
  */
 import React from "react";
 import { Link } from "react-router-dom";
@@ -28,6 +28,10 @@ export default class Home extends React.Component {
       errorAlert: false,
       errorAlertInfo: ""
     };
+  }
+
+  componentDidMount() {
+    console.log("Home component did mount, "+sessionStorage.getItem(global.tt_constant.UID))
   }
 
   _signin(event) {
@@ -56,6 +60,7 @@ export default class Home extends React.Component {
             errorAlertInfo: global.tt_constant.home_account_pw_nomatch
           });
         } else {
+          sessionStorage.setItem(global.tt_constant.UID, response.uid)
           this.props.history.push("/dashboard/" + response.uid);          
         }
       }
@@ -161,6 +166,7 @@ export default class Home extends React.Component {
           <div className="ttContent2-div">
             <div className="ttContent2-div-image">
               <img
+                alt=""
                 src={nosdksImg}
                 style={{ width: 100, height: 92 }}
               />
@@ -176,6 +182,7 @@ export default class Home extends React.Component {
           <div className="ttContent2-div">
             <div className="ttContent2-div-image">
               <img
+                alt=""
                 src={realtimeImg}
                 style={{ width: 100, height: 99 }}
               />
@@ -194,7 +201,7 @@ export default class Home extends React.Component {
           </div>
           <div className="ttContent2-div">
             <div className="ttContent2-div-image">
-            <img src={pushnotifyImg} style={{width: 100, height: 103, opacity: 1}}></img>
+            <img alt="" src={pushnotifyImg} style={{width: 100, height: 103, opacity: 1}}></img>
             </div>
             <div className="ttContent2-div-right-div">
               <div className="ttContent2-div-right-div-title">
@@ -209,7 +216,7 @@ export default class Home extends React.Component {
           </div>
           <div className="ttContent2-div">
             <div className="ttContent2-div-image">
-            <img src={analyzesImg} style={{width: 100, height: 99}}></img>
+            <img alt="" src={analyzesImg} style={{width: 100, height: 99}}></img>
             </div>
             <div className="ttContent2-div-right-div">
               <div className="ttContent2-div-right-div-title">
