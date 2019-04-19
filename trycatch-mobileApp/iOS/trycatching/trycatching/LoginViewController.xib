@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -90,6 +90,57 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TzD-Zr-3xb">
+                    <rect key="frame" x="25" y="522" width="346.5" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="YEK-6g-1tY"/>
+                    </constraints>
+                    <attributedString key="attributedText">
+                        <fragment content="By clicking &quot;Sign in&quot; button">
+                            <attributes>
+                                <color key="NSColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <font key="NSFont" metaFont="system"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                        <fragment content=",">
+                            <attributes>
+                                <color key="NSColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <font key="NSFont" size="13" name=".PingFangSC-Regular"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                        <fragment content=" you agree to our ">
+                            <attributes>
+                                <color key="NSColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <font key="NSFont" metaFont="system"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                        <fragment content="Privacy Policy Statement">
+                            <attributes>
+                                <color key="NSColor" red="0.22996407747268677" green="0.40254995226860046" blue="0.73871797323226929" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <font key="NSFont" metaFont="system"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                        <fragment content=".">
+                            <attributes>
+                                <color key="NSColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <font key="NSFont" metaFont="system"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZQj-pF-vTh" userLabel="PrivacyPolicyStatement">
+                    <rect key="frame" x="0.0" y="522" width="375" height="30"/>
+                    <state key="normal" title=""/>
+                    <connections>
+                        <action selector="privacyClick:" destination="-1" eventType="touchUpInside" id="gnX-tk-d0q"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -98,16 +149,22 @@
                 <constraint firstItem="mb6-8L-0X7" firstAttribute="leading" secondItem="qbd-yn-YhK" secondAttribute="leading" id="Aq4-NM-9hN"/>
                 <constraint firstItem="u84-G5-ge3" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="DsG-zF-HTF"/>
                 <constraint firstItem="RGI-JB-ttL" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="80" id="HMe-KX-Unb"/>
+                <constraint firstItem="TzD-Zr-3xb" firstAttribute="leading" secondItem="xac-lN-Maf" secondAttribute="leading" id="HyY-jo-v70"/>
                 <constraint firstItem="0MP-BF-Ysg" firstAttribute="leading" secondItem="KOM-E9-C2r" secondAttribute="leading" id="IKH-XL-6vj"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="xac-lN-Maf" secondAttribute="trailing" constant="25" id="J35-CV-Uun"/>
                 <constraint firstItem="qbd-yn-YhK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="25" id="K2X-rj-140"/>
                 <constraint firstItem="RGI-JB-ttL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Ujp-JV-PN0"/>
                 <constraint firstItem="qbd-yn-YhK" firstAttribute="top" secondItem="RGI-JB-ttL" secondAttribute="bottom" constant="30" id="W5A-t3-TQP"/>
+                <constraint firstItem="TzD-Zr-3xb" firstAttribute="top" secondItem="ZQj-pF-vTh" secondAttribute="top" id="XQ9-Gb-raf"/>
                 <constraint firstItem="KOM-E9-C2r" firstAttribute="leading" secondItem="qbd-yn-YhK" secondAttribute="leading" id="aiv-QY-rxg"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ZQj-pF-vTh" secondAttribute="trailing" id="c0a-Gb-iBN"/>
                 <constraint firstItem="0MP-BF-Ysg" firstAttribute="top" secondItem="mb6-8L-0X7" secondAttribute="bottom" constant="5" id="cj7-x8-Mga"/>
                 <constraint firstItem="xac-lN-Maf" firstAttribute="top" secondItem="0MP-BF-Ysg" secondAttribute="bottom" constant="100" id="egt-yO-b5I"/>
                 <constraint firstItem="mb6-8L-0X7" firstAttribute="top" secondItem="qbd-yn-YhK" secondAttribute="bottom" constant="70" id="fa4-Wf-Osd"/>
                 <constraint firstItem="u84-G5-ge3" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="15" id="hQp-yT-AcG"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="TzD-Zr-3xb" secondAttribute="trailing" constant="3.5" id="qAB-hC-Hbg"/>
+                <constraint firstItem="ZQj-pF-vTh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="vzX-kZ-xqa"/>
+                <constraint firstItem="ZQj-pF-vTh" firstAttribute="top" secondItem="xac-lN-Maf" secondAttribute="bottom" constant="5" id="x38-gm-Daa"/>
                 <constraint firstItem="KOM-E9-C2r" firstAttribute="top" secondItem="qbd-yn-YhK" secondAttribute="bottom" constant="5" id="x8g-gp-5Yu"/>
                 <constraint firstItem="ceU-Pw-V2y" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="40" id="y9u-pC-efF"/>
                 <constraint firstItem="xac-lN-Maf" firstAttribute="leading" secondItem="mb6-8L-0X7" secondAttribute="leading" id="z2L-EJ-RIE"/>
@@ -118,6 +175,6 @@
         </view>
     </objects>
     <resources>
-        <image name="ttlogo" width="510.239990234375" height="510.239990234375"/>
+        <image name="ttlogo" width="354.33334350585938" height="354.33334350585938"/>
     </resources>
 </document>
