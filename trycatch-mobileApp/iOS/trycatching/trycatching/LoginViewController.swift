@@ -16,7 +16,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     var currentTextField : UITextField? = nil
     
+    @IBAction func privacyClick(_ sender: UIButton) {
+        self.present(PrivacyViewController.init(), animated: true, completion: nil)
+    }
     @IBAction func signinClick(_ sender: UIButton) {
+        if emailTextField.text?.count == 0 || passwordTextField.text?.count == 0 {
+            return
+        }
         self.activityIndicator.startAnimating()
         self.emailTextField.isEnabled = false
         self.passwordTextField.isEnabled = false
