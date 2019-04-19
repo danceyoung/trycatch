@@ -67,9 +67,9 @@ class DebugTableViewController: UITableViewController, SelectMultipleButtonsDele
                     let bugsDic = responseDic["bugs"]
                     if !(bugsDic is NSNull) {
                         self.bugs = self.bugs + ((bugsDic as? [Any])!)
-                        self.tableView.reloadData()
                         self.fetchPage = self.fetchPage + 1
                     }
+                    self.tableView.reloadData()
                 }else {
                     
                 }
@@ -141,6 +141,7 @@ class DebugTableViewController: UITableViewController, SelectMultipleButtonsDele
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = SelectMultipleButtons.init(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 10))
+        headerView.backgroundColor = .groupTableViewBackground
         headerView.delegate = self
         headerView.load()
         sectionHeaderHeight = headerView.frame.size.height
