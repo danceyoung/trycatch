@@ -69,10 +69,6 @@ class ProjectTableViewController: UITableViewController {
 //                            print("data after fetching chartdatas ", project)
                         }
                     })
-                    
-                    
-                }else {
-                    
                 }
             }
         }
@@ -85,18 +81,34 @@ class ProjectTableViewController: UITableViewController {
         
         Network.shared.post(body: ["uid":UserDefaults.standard.string(forKey: Constant.TTFUID)!], path: "project/list") { (responseDic) in
             print("I retrived data is \(responseDic)")
+            DispatchQueue.main.sync(execute: {
+                self.tableView.refreshControl?.endRefreshing()
+            })
             let msgDic = responseDic["msg"] as? NSDictionary
-            if msgDic?["code"] as? Int == 0 {
+            let intCode = msgDic?["code"] as? Int
+            switch intCode {
+            case 0:
                 let projectsArray = (responseDic["projects"]! as! NSArray)
                 self.objects = projectsArray as! [Any]
                 self.pullBugsChartData()
                 DispatchQueue.main.async(execute: {
                     self.tableView.reloadData()
-                    self.refreshControl?.endRefreshing()
                 })
+            case 12:
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "", message: "No any project about you, please contact your admin or create youself project.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            default:
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "", message: Constant.SERVERERRORMSG, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
             }
-            
         }
+        
     }
     
     // MARK: - segue
