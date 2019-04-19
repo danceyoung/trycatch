@@ -4,7 +4,7 @@
  * @flow 
  * @Date: 2018-06-21 17:10:49 
  * @Last Modified by: Young
- * @Last Modified time: 2019-04-17 10:25:37
+ * @Last Modified time: 2019-04-18 10:06:25
  */
 import React from "react";
 import { Link } from "react-router-dom";
@@ -18,6 +18,7 @@ import nosdksImg from "./imgs/nosdksbox.png";
 import realtimeImg from "./imgs/realtime.png"
 import pushnotifyImg from "./imgs/pushnotification.png"
 import analyzesImg from "./imgs/analyzes.png"
+import sloveImg from "./imgs/slove.png"
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -201,7 +202,11 @@ export default class Home extends React.Component {
           </div>
           <div className="ttContent2-div">
             <div className="ttContent2-div-image">
-            <img alt="" src={pushnotifyImg} style={{width: 100, height: 103, opacity: 1}}></img>
+              <img
+                alt=""
+                src={pushnotifyImg}
+                style={{ width: 100, height: 103, opacity: 1 }}
+              />
             </div>
             <div className="ttContent2-div-right-div">
               <div className="ttContent2-div-right-div-title">
@@ -216,15 +221,36 @@ export default class Home extends React.Component {
           </div>
           <div className="ttContent2-div">
             <div className="ttContent2-div-image">
-            <img alt="" src={analyzesImg} style={{width: 100, height: 99}}></img>
+              <img
+                alt=""
+                src={analyzesImg}
+                style={{ width: 100, height: 99 }}
+              />
             </div>
             <div className="ttContent2-div-right-div">
               <div className="ttContent2-div-right-div-title">
                 Analyzes and aggregates
               </div>
               <div className="ttContent2-div-right-div-content">
-                App and Web all will show the information summary or detail
-                by drawing time chart and other charts.
+                TryCatch App and Web site all will real-time show the
+                information summary or detail through different charts.
+              </div>
+            </div>
+          </div>
+          <div className="ttContent2-div">
+            <div className="ttContent2-div-image">
+              <img
+                alt=""
+                src={sloveImg}
+                style={{ width: 100, height: 100 }}
+              />
+            </div>
+            <div className="ttContent2-div-right-div">
+              <div className="ttContent2-div-right-div-title">
+                Finally solve
+              </div>
+              <div className="ttContent2-div-right-div-content">
+                Errors are found in your applications, finally you will solve these errors. If you can't solve, you can open them to seek helps, for example opening to StackOverFlow.
               </div>
             </div>
           </div>
