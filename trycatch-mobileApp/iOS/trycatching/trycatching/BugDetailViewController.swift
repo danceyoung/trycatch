@@ -11,13 +11,19 @@ import UIKit
 class BugDetailViewController: UIViewController {
 
     var bugContent = ""
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
     
     @IBOutlet weak var bugTextView: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         self.bugTextView.text = bugContent
+//        UIApplication.shared.setStatusBarHidden(true, with: .none)
+        self.modalPresentationCapturesStatusBarAppearance = true
     }
     
     @IBAction func closeButtonClick(_ sender: UIButton) {
