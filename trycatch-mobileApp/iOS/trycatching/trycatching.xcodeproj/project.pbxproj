@@ -25,6 +25,8 @@
 		6F91224B22379F8800475B2A /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F91224A22379F8800475B2A /* libsqlite3.0.tbd */; };
 		6F91224D22379FC500475B2A /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F91224C22379FC500475B2A /* libXG-SDK.a */; };
 		6F9122672237AE9300475B2A /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F9122612237AE9300475B2A /* libXG-SDK.a */; };
+		6FB16D2D226875C500F8788D /* privacy_policy.html in Resources */ = {isa = PBXBuildFile; fileRef = 6FB16D2C226875C500F8788D /* privacy_policy.html */; };
+		6FB16D2F226875D400F8788D /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB16D2E226875D400F8788D /* PrivacyViewController.swift */; };
 		6FE189D121927EEB00A64EC5 /* ProjectCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE189CF21927EEB00A64EC5 /* ProjectCellTableViewCell.swift */; };
 		6FE189D221927EEB00A64EC5 /* ProjectCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FE189D021927EEB00A64EC5 /* ProjectCellTableViewCell.xib */; };
 		6FE189D521942DB300A64EC5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE189D321942DB300A64EC5 /* LoginViewController.swift */; };
@@ -83,6 +85,8 @@
 		6F91225D2237AA2100475B2A /* TryCatching-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TryCatching-Bridging-Header.h"; sourceTree = "<group>"; };
 		6F91225F2237AE9300475B2A /* XGPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGPush.h; sourceTree = "<group>"; };
 		6F9122612237AE9300475B2A /* libXG-SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libXG-SDK.a"; sourceTree = "<group>"; };
+		6FB16D2C226875C500F8788D /* privacy_policy.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = privacy_policy.html; sourceTree = "<group>"; };
+		6FB16D2E226875D400F8788D /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
 		6FE189CF21927EEB00A64EC5 /* ProjectCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCellTableViewCell.swift; sourceTree = "<group>"; };
 		6FE189D021927EEB00A64EC5 /* ProjectCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectCellTableViewCell.xib; sourceTree = "<group>"; };
 		6FE189D321942DB300A64EC5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -200,6 +204,7 @@
 		6FFC1EFF218FE33E00062E06 /* trycatching */ = {
 			isa = PBXGroup;
 			children = (
+				6FB16D2C226875C500F8788D /* privacy_policy.html */,
 				6F912241223798A100475B2A /* trycatching.entitlements */,
 				6F3F691C21C1FE20008A779C /* net */,
 				6FFC1F00218FE33E00062E06 /* AppDelegate.swift */,
@@ -222,6 +227,7 @@
 				6F065A9F21D212C200428B2C /* BugDetailViewController.swift */,
 				6F0338712251BABE00FD7254 /* MoreViewController.swift */,
 				6F8C7EA7225B4F450077521B /* LargeValueFormatter.swift */,
+				6FB16D2E226875D400F8788D /* PrivacyViewController.swift */,
 			);
 			path = trycatching;
 			sourceTree = "<group>";
@@ -381,6 +387,7 @@
 				6FFC1F0A218FE34100062E06 /* Assets.xcassets in Resources */,
 				6F1FA4FA21CB7239006B8E9B /* PBugTableViewCell.xib in Resources */,
 				6FFC1F08218FE33E00062E06 /* Main.storyboard in Resources */,
+				6FB16D2D226875C500F8788D /* privacy_policy.html in Resources */,
 				6FE189D221927EEB00A64EC5 /* ProjectCellTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -487,6 +494,7 @@
 			files = (
 				6F065AA021D212C200428B2C /* BugDetailViewController.swift in Sources */,
 				6F0338722251BABE00FD7254 /* MoreViewController.swift in Sources */,
+				6FB16D2F226875D400F8788D /* PrivacyViewController.swift in Sources */,
 				6F29CAC021BA4DFA008C5861 /* DebugTableViewController.swift in Sources */,
 				6F29CABE21BA4817008C5861 /* ProjectTableViewController.swift in Sources */,
 				6F1FA4F921CB7239006B8E9B /* PBugTableViewCell.swift in Sources */,
