@@ -4,7 +4,7 @@
  * @flow 
  * @Date: 2018-06-06 14:23:05 
  * @Last Modified by: Young
- * @Last Modified time: 2018-10-25 11:46:52
+ * @Last Modified time: 2019-04-17 16:53:22
  */
 import React from "react";
 import { BrowserRouter, Link, Route } from "react-router-dom";
@@ -218,8 +218,8 @@ export default class EditProject extends React.Component {
 
   render() {
     return (
-      <BrowserRouter>
-        <Route exact path="/project/edit/:ttd/:ttpd">
+      // <BrowserRouter>
+        // <Route exact path="/project/edit/:ttd/:ttpd">
           <div
             style={{
               display: "flex",
@@ -248,7 +248,7 @@ export default class EditProject extends React.Component {
                   </div>
                 </div>
                 <Link
-                  to={"/project/projectdelete/" + this.props.match.params.ttpd}
+                  to={"/project/edit/projectdelete/" + this.props.match.params.ttpd}
                 >
                   <div className="npDeleteProjectDiv">Delete the project</div>
                 </Link>
@@ -351,7 +351,7 @@ export default class EditProject extends React.Component {
                             onClick={event =>
                               this._deleteLinkClick(event, item)
                             }
-                            to={"/project/memberdelete/" + item.email}
+                            to={"/project/edit/memberdelete/" + item.email}
                           >
                             <img
                               className="npMemberActionImg"
@@ -470,7 +470,7 @@ export default class EditProject extends React.Component {
               </div>
             </div>
             <Route
-              path="/project/memberdelete/:passkey"
+              path="/project/edit/memberdelete/:passkey"
               render={props => (
                 <ScreenAlert
                   {...props}
@@ -485,7 +485,7 @@ export default class EditProject extends React.Component {
               )}
             />
             <Route
-              path="/project/projectdelete/:passkey"
+              path="/project/edit/projectdelete/:passkey"
               render={props => (
                 <ScreenAlert
                   {...props}
@@ -500,8 +500,8 @@ export default class EditProject extends React.Component {
               )}
             />
           </div>
-        </Route>
-      </BrowserRouter>
+        // </Route>
+      // </BrowserRouter> 
     );
   }
 }
