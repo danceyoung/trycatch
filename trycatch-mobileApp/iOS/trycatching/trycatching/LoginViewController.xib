@@ -61,7 +61,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xac-lN-Maf">
-                    <rect key="frame" x="25" y="467" width="325" height="50"/>
+                    <rect key="frame" x="25" y="397" width="325" height="50"/>
                     <color key="backgroundColor" red="0.23137254901960785" green="0.40392156862745099" blue="0.73725490196078436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="fRZ-6c-J2m"/>
@@ -91,7 +91,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TzD-Zr-3xb">
-                    <rect key="frame" x="25" y="522" width="346.5" height="32"/>
+                    <rect key="frame" x="25" y="452" width="346.5" height="32"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="32" id="YEK-6g-1tY"/>
                     </constraints>
@@ -135,7 +135,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZQj-pF-vTh" userLabel="PrivacyPolicyStatement">
-                    <rect key="frame" x="0.0" y="522" width="375" height="30"/>
+                    <rect key="frame" x="0.0" y="452" width="375" height="30"/>
                     <state key="normal" title=""/>
                     <connections>
                         <action selector="privacyClick:" destination="-1" eventType="touchUpInside" id="gnX-tk-d0q"/>
@@ -158,8 +158,8 @@
                 <constraint firstItem="TzD-Zr-3xb" firstAttribute="top" secondItem="ZQj-pF-vTh" secondAttribute="top" id="XQ9-Gb-raf"/>
                 <constraint firstItem="KOM-E9-C2r" firstAttribute="leading" secondItem="qbd-yn-YhK" secondAttribute="leading" id="aiv-QY-rxg"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ZQj-pF-vTh" secondAttribute="trailing" id="c0a-Gb-iBN"/>
+                <constraint firstItem="xac-lN-Maf" firstAttribute="top" secondItem="0MP-BF-Ysg" secondAttribute="bottom" constant="30" id="c9s-j2-8LX"/>
                 <constraint firstItem="0MP-BF-Ysg" firstAttribute="top" secondItem="mb6-8L-0X7" secondAttribute="bottom" constant="5" id="cj7-x8-Mga"/>
-                <constraint firstItem="xac-lN-Maf" firstAttribute="top" secondItem="0MP-BF-Ysg" secondAttribute="bottom" constant="100" id="egt-yO-b5I"/>
                 <constraint firstItem="mb6-8L-0X7" firstAttribute="top" secondItem="qbd-yn-YhK" secondAttribute="bottom" constant="70" id="fa4-Wf-Osd"/>
                 <constraint firstItem="u84-G5-ge3" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="15" id="hQp-yT-AcG"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="TzD-Zr-3xb" secondAttribute="trailing" constant="3.5" id="qAB-hC-Hbg"/>
