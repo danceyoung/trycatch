@@ -20,7 +20,7 @@ class DebugTableViewController: UITableViewController, SelectMultipleButtonsDele
     var loadingMore = true
     var bugSelectedIndex = 0
     
-    let buttonTitleArray = ["riding and niuer", "danceyoung", "sword", "dd", "icelee", "leev10031223", "riding and niuer", "danceyoung", "brokensword", "icelee", "leev10031223"]
+//    let buttonTitleArray = ["riding and niuer", "danceyoung", "sword", "dd", "icelee", "leev10031223", "riding and niuer", "danceyoung", "brokensword", "icelee", "leev10031223"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,14 +70,17 @@ class DebugTableViewController: UITableViewController, SelectMultipleButtonsDele
                         self.fetchPage = self.fetchPage + 1
                     }
                     self.tableView.reloadData()
+                    if self.fetchPage == 1 && code == Constant.NOMOREDATACODE {
+                        let alert = UIAlertController.init(title: "", message: "No bug for the selected users.", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction.init(title: "OK", style: .default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                    }
                 }else {
                     
                 }
                 self.refreshControl?.endRefreshing()
                 self.loadingMore = false
             })
-            
-            
         }
     }
     
@@ -94,8 +97,13 @@ class DebugTableViewController: UITableViewController, SelectMultipleButtonsDele
         button.setBackgroundColor(UIColor(red: 0xEF/255, green: 0xF7/255, blue: 0xFF/255, alpha: 1), for: .normal)
         button.setTitleColor(.black, for: .selected)
         button.setBackgroundColor(UIColor(red: 0xFF/255, green: 0xD3/255, blue: 0x5B/255, alpha: 1), for: .selected)
-        button.isSelected = true
+        if self.idsSelected.contains((debugger["user_id"] as? String)!) {
+            button.isSelected = true
+        }else {
+            button.isSelected = false
+        }
         
+        print("buttonOfSelectMultipleButtons is again perform.")
         
         return button
     }
@@ -105,7 +113,7 @@ class DebugTableViewController: UITableViewController, SelectMultipleButtonsDele
     }
 
     func didSingleTapOf(selectMultipleButtons: SelectMultipleButtons, atIndex index: Int) {
-        print("button \(buttonTitleArray[index]) did single taped at \(index) index")
+//        print("button \(buttonTitleArray[index]) did single taped at \(index) index")
     }
     
     func indexesSelectedOf(selectMultipleButtons: SelectMultipleButtons, didChange indexes: [Int]) {
@@ -117,6 +125,7 @@ class DebugTableViewController: UITableViewController, SelectMultipleButtonsDele
             }
         }
         self.bugs.removeAll()
+        self.fetchPage = 1
         self.pullBugs(self.idsSelected as NSArray)
     }
     
