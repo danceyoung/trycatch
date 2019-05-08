@@ -49,7 +49,7 @@
                         <attributedString key="attributedTitle">
                             <fragment content="Loading">
                                 <attributes>
-                                    <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <font key="NSFont" metaFont="smallSystem"/>
                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                 </attributes>
