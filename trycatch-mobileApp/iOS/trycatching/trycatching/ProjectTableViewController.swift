@@ -29,7 +29,7 @@ class ProjectTableViewController: UITableViewController {
         let cellNib = UINib.init(nibName: "ProjectCellTableViewCell", bundle: nil)
         self.tableView.register(cellNib, forCellReuseIdentifier: "ProjectCellTableViewCell")
 
-        self.refreshControl?.addTarget(self, action: #selector(pullProjects), for: .valueChanged)
+//        self.refreshControl?.addTarget(self, action: #selector(pullProjects), for: .valueChanged)
         refreshControl?.beginRefreshing()
 
         NotificationCenter.default.addObserver(self, selector: #selector(appWillEnterForgroundEvent), name: UIApplication.willEnterForegroundNotification, object: nil)
@@ -47,10 +47,8 @@ class ProjectTableViewController: UITableViewController {
         self.pullProjects()
     }
     
-    
-    
     func pullBugsChartData() {
-        objects.forEach { (project) in
+        objects.enumerated().forEach { (idx, project) in
             let dicProject = project as! NSDictionary
             let tempUid = UserDefaults.standard.string(forKey: Constant.TTFUID)!
             let tempProjectId = dicProject["project_id"] as! String
@@ -64,7 +62,9 @@ class ProjectTableViewController: UITableViewController {
                         if msgDic["code"] as! Int == 0 {
                            dicProject.setValue(responseDic["chart"], forKey: "chart")
                             DispatchQueue.main.async {
-                                self.tableView.reloadData()
+                                let rowsReload = [IndexPath.init(row: idx, section: 0)]
+                                
+                                self.tableView.reloadRows(at: rowsReload, with: .none)
                             }
 //                            print("data after fetching chartdatas ", project)
                         }
@@ -81,19 +81,17 @@ class ProjectTableViewController: UITableViewController {
         
         Network.shared.post(body: ["uid":UserDefaults.standard.string(forKey: Constant.TTFUID)!], path: "project/list") { (responseDic) in
             print("I retrived data is \(responseDic)")
-            DispatchQueue.main.sync(execute: {
-                self.tableView.refreshControl?.endRefreshing()
-            })
             let msgDic = responseDic["msg"] as? NSDictionary
             let intCode = msgDic?["code"] as? Int
             switch intCode {
             case 0:
                 let projectsArray = (responseDic["projects"]! as! NSArray)
                 self.objects = projectsArray as! [Any]
-                self.pullBugsChartData()
                 DispatchQueue.main.async(execute: {
                     self.tableView.reloadData()
                 })
+                self.pullBugsChartData()
+
             case 12:
                 DispatchQueue.main.async {
                     let alert = UIAlertController(title: "", message: "No any project about you, please contact your admin or create youself project.", preferredStyle: .alert)
@@ -107,6 +105,12 @@ class ProjectTableViewController: UITableViewController {
                     self.present(alert, animated: true, completion: nil)
                 }
             }
+            DispatchQueue.main.async(execute: {
+                if self.tableView.refreshControl!.isRefreshing {
+                    self.tableView.refreshControl?.endRefreshing()
+                }
+            })
+
         }
         
     }
@@ -124,6 +128,15 @@ class ProjectTableViewController: UITableViewController {
         default: break
             
         }
+    }
+    
+    // MARK: - Scroll view delegate
+    
+    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if self.refreshControl!.isRefreshing {
+            pullProjects()
+        }
+        print(scrollView.contentOffset)
     }
 
     // MARK: - Table view data source
