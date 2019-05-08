@@ -4,7 +4,7 @@
  * @flow 
  * @Date: 2018-05-31 16:26:22 
  * @Last Modified by: Young
- * @Last Modified time: 2018-10-26 17:35:02
+ * @Last Modified time: 2019-05-07 15:41:16
  */
 
 .superDiv {
@@ -40,7 +40,7 @@
 
 .projectDiv {
   /* background-color: lightblue; */
-  height: 100px;
+  height: 150px;
   /* border-color: lightgray; */
   /* border-width: 1px; */
   /* border-style: solid; */
@@ -83,7 +83,7 @@
   height: 25px;
   align-items: center;
   margin-left: 5px;
-  margin-top: 45px;
+  margin-top: 5px;
   color: gray;
   font-size: 12px;
 }
