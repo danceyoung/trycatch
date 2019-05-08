@@ -8,7 +8,8 @@ target 'trycatching' do
   # Pods for trycatching
   pod 'CryptoSwift'
   pod 'selectmultiplebuttons', '~> 0.0.3'
-  pod 'Charts' 
+  pod 'Charts'
+  pod 'IQKeyboardManagerSwift'
   target 'trycatchingTests' do
     inherit! :search_paths
     # Pods for testing
