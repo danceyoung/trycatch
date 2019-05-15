@@ -4,7 +4,7 @@
  * @flow 
  * @Date: 2018-06-21 17:10:49 
  * @Last Modified by: Young
- * @Last Modified time: 2019-04-18 10:06:25
+ * @Last Modified time: 2019-05-09 10:25:11
  */
 import React from "react";
 import { Link } from "react-router-dom";
@@ -164,80 +164,87 @@ export default class Home extends React.Component {
           </div>
         </div>
         <section className="ttContent2">
-          <div className="ttContent2-div">
-            <div className="ttContent2-div-image">
-              <img
-                alt=""
-                src={nosdksImg}
-                style={{ width: 100, height: 92 }}
-              />
+          <div style={{flex: 1, display: 'flex', flexDirection: 'row'}}>
+            <div className="ttContent2-div" style={{marginLeft: -20}}>
+              <div className="ttContent2-div-image">
+                <img
+                  alt=""
+                  src={nosdksImg}
+                  style={{ width: 100, height: 92 }}
+                />
+              </div>
+              <div className="ttContent2-div-right-div">
+                <div className="ttContent2-div-right-div-title">
+                  No SDKs
+                </div>
+                <div className="ttContent2-div-right-div-content">
+                  You're still under the current coding model, no need to be
+                  embed any SDK, you can collect what to be collected.
+                </div>
+              </div>
             </div>
-            <div className="ttContent2-div-right-div">
-              <div className="ttContent2-div-right-div-title">No SDKs</div>
-              <div className="ttContent2-div-right-div-content">
-                You're still under the current coding model, no need to be
-                embed any SDK, you can collect what to be collected.
+            <div className="ttContent2-div" style={{marginLeft: 20}}>
+              <div className="ttContent2-div-image">
+                <img
+                  alt=""
+                  src={realtimeImg}
+                  style={{ width: 100, height: 99 }}
+                />
+              </div>
+              <div className="ttContent2-div-right-div">
+                <div className="ttContent2-div-right-div-title">
+                  Real-time
+                </div>
+                <div className="ttContent2-div-right-div-content">
+                  Using Apache Flume Source watches the specified files, and
+                  tails them in nearly real-time once detected new lines
+                  appended to the each files. Customing Flume's HTTP Sink,
+                  send those content what you marked to server.
+                </div>
               </div>
             </div>
           </div>
-          <div className="ttContent2-div">
-            <div className="ttContent2-div-image">
-              <img
-                alt=""
-                src={realtimeImg}
-                style={{ width: 100, height: 99 }}
-              />
-            </div>
-            <div className="ttContent2-div-right-div">
-              <div className="ttContent2-div-right-div-title">
-                Real-time
+
+          <div style={{flex: 1, display: 'flex', flexDirection: 'row'}}>
+            <div className="ttContent2-div" style={{marginLeft: -20}}>
+              <div className="ttContent2-div-image">
+                <img
+                  alt=""
+                  src={pushnotifyImg}
+                  style={{ width: 100, height: 103, opacity: 1 }}
+                />
               </div>
-              <div className="ttContent2-div-right-div-content">
-                Using Apache Flume Source watches the specified files, and
-                tails them in nearly real-time once detected new lines
-                appended to the each files. Customing Flume's HTTP Sink,
-                send those content what you marked to server.
-              </div>
-            </div>
-          </div>
-          <div className="ttContent2-div">
-            <div className="ttContent2-div-image">
-              <img
-                alt=""
-                src={pushnotifyImg}
-                style={{ width: 100, height: 103, opacity: 1 }}
-              />
-            </div>
-            <div className="ttContent2-div-right-div">
-              <div className="ttContent2-div-right-div-title">
-                Push Notifications
-              </div>
-              <div className="ttContent2-div-right-div-content">
-                Now we have TryCatch APP for iOS, you can download, install
-                and login APP, upon receipt of information related you will
-                be immediately sent to your smart phone.
+              <div className="ttContent2-div-right-div">
+                <div className="ttContent2-div-right-div-title">
+                  Push Notifications
+                </div>
+                <div className="ttContent2-div-right-div-content">
+                  Now we have TryCatch APP for iOS, you can download, install
+                  and login APP, upon receipt of information related you will
+                  be immediately sent to your smart phone.
+                </div>
               </div>
             </div>
-          </div>
-          <div className="ttContent2-div">
-            <div className="ttContent2-div-image">
-              <img
-                alt=""
-                src={analyzesImg}
-                style={{ width: 100, height: 99 }}
-              />
-            </div>
-            <div className="ttContent2-div-right-div">
-              <div className="ttContent2-div-right-div-title">
-                Analyzes and aggregates
+            <div className="ttContent2-div" style={{marginLeft: 20}}>
+              <div className="ttContent2-div-image">
+                <img
+                  alt=""
+                  src={analyzesImg}
+                  style={{ width: 100, height: 99 }}
+                />
               </div>
-              <div className="ttContent2-div-right-div-content">
-                TryCatch App and Web site all will real-time show the
-                information summary or detail through different charts.
+              <div className="ttContent2-div-right-div">
+                <div className="ttContent2-div-right-div-title">
+                  Analyzes and aggregates
+                </div>
+                <div className="ttContent2-div-right-div-content">
+                  TryCatch App and Web site all will real-time show the
+                  information summary or detail through different charts.
+                </div>
               </div>
             </div>
           </div>
-          <div className="ttContent2-div">
+          <div className="ttContent2-div" style={{marginLeft: -20}}>
             <div className="ttContent2-div-image">
               <img
                 alt=""
@@ -250,7 +257,9 @@ export default class Home extends React.Component {
                 Finally solve
               </div>
               <div className="ttContent2-div-right-div-content">
-                Errors are found in your applications, finally you will solve these errors. If you can't solve, you can open them to seek helps, for example opening to StackOverFlow.
+                Errors are found in your applications, finally you will
+                solve these errors. If you can't solve, you can open them to
+                seek helps, for example opening to StackOverFlow.
               </div>
             </div>
           </div>
