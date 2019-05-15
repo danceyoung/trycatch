@@ -4,7 +4,7 @@
  * @flow 
  * @Date: 2018-04-23 15:31:55 
  * @Last Modified by: Young
- * @Last Modified time: 2019-05-08 17:09:47
+ * @Last Modified time: 2019-05-14 10:46:04
  */
 import React from "react";
 import "./app.css";
@@ -21,37 +21,10 @@ import FullScreenBug from "./project/fullscreenbug.js";
 import Setting from "./account/setting";
 import {
   LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend
+  Line
 } from "recharts";
+import PReport from "./project/projectlinechart.js"
 // var Tesseract = window.Tesseract;
-const data = [
-  {
-    pv: 2400
-  },
-  {
-    pv: 1398
-  },
-  {
-    pv: 9800
-  },
-  {
-    pv: 3908
-  },
-  {
-    pv: 4800
-  },
-  {
-    pv: 3800
-  },
-  {
-    pv: 4300
-  }
-];
 
 export default class Main extends React.Component {
   constructor(props) {
@@ -61,6 +34,8 @@ export default class Main extends React.Component {
       projects: [],
       projectSimpleLineCharts: [],
       selectedProject: null,
+      selectedProjectIdx: 0,
+      selectedProjectDebugerIds:[],
       selectReceiveFromList: [],
       selectProjectBugs: [],
       selectedBug: "",
@@ -93,6 +68,9 @@ export default class Main extends React.Component {
           this._getProjectMembers(
             response.projects[0].project_id, 
             (projectId, debuggerids)=>{
+              this.setState({
+                selectedProjectDebugerIds: debuggerids
+              })
               this._getProjectBugs(projectId, debuggerids)
             }
             );
@@ -221,6 +199,7 @@ export default class Main extends React.Component {
       this._getProjectMembers(
         project.project_id,
         (projectId, debuggerids) => {
+          this.setState({selectedProjectDebugerIds: debuggerids})
           this._getProjectBugs(projectId, debuggerids);
         }
       );
@@ -264,7 +243,6 @@ export default class Main extends React.Component {
                 bottom: 5
               }}
             >
-              <Tooltip /> 
               <Line
                 type="monotone"
                 dataKey="yvalue"
@@ -331,6 +309,14 @@ export default class Main extends React.Component {
 
   _tabOnClick(event, tabIndex) {
     this.setState({ activityDivSelected: tabIndex === 0 ? true : false });
+    if (tabIndex === 1) {
+      this.setState(
+        {
+          selectedProjectIdx: this.state.projects.indexOf(this.state.selectedProject)
+        }
+      )
+      
+    }
   }
 
   _nextButtonOnClick(event) {
@@ -515,7 +501,12 @@ export default class Main extends React.Component {
                   />
                   <Route
                     path={`${match.url}/report`}
-                    component={() => <div>No bugs is impossible.</div>}
+                    component={()=>
+                    <PReport 
+                    projectId={this.state.selectedProject.project_id}
+                    debugers={this.state.selectReceiveFromList}
+                    allData={this.state.projectSimpleLineCharts[this.state.selectedProjectIdx]}></PReport>
+                    }
                   />
                   <Route
                     path={`${this.props.match.path}/fullscreenbug`}
