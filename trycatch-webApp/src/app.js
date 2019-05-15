@@ -4,7 +4,7 @@
  * @flow 
  * @Date: 2018-04-23 15:31:55 
  * @Last Modified by: Young
- * @Last Modified time: 2019-05-15 15:04:55
+ * @Last Modified time: 2019-05-15 15:57:16
  */
 import React from "react";
 import "./app.css";
@@ -239,7 +239,7 @@ export default class Main extends React.Component {
               height={100}
               data={this.state.projectSimpleLineCharts[index]}
               margin={{
-                top: 10,
+                top: 15,
                 right: 10,
                 left: 10,
                 bottom: 5
