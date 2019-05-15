@@ -4,7 +4,7 @@
  * @flow 
  * @Date: 2018-04-23 15:31:55 
  * @Last Modified by: Young
- * @Last Modified time: 2019-05-15 15:57:16
+ * @Last Modified time: 2019-05-15 16:58:37
  */
 import React from "react";
 import "./app.css";
@@ -131,12 +131,17 @@ export default class Main extends React.Component {
         if (response.msg.code !== 0) {
         } else {
           // console.log(JSON.stringify(response.receivefromlist))
-          this.setState({
-            selectReceiveFromList: response.receive_from_list.map(ele => {
-              ele["selected"] = true;
-              return ele;
-            })
-          });
+          if (projectId === this.state.selectedProject.project_id) {
+            this.setState({
+              selectReceiveFromList: response.receive_from_list.map(
+                ele => {
+                  ele["selected"] = true;
+                  return ele;
+                }
+              )
+            });
+          }
+          
           if (callback !== null) {
             callback(
               projectId,
@@ -186,23 +191,28 @@ export default class Main extends React.Component {
 
   _projectItemOnClick(event, project, index) {
     // if (project.project_id !== this.state.selectedProject.project_id) {
-      this.setState({
-        selectReceiveFromList: [],
-        // projectSimpleLineCharts: [],
-        selectProjectBugs: [],
-        selectedProjectIdx: index,
-        fetchPage: 1,
-        selectedProject: project,
-        noMoreBugsVisible: "hidden",
-        noBugsVisible: "hidden",
-        nextButtonVisible: "visible"
-      });
-
-      this._getProjectMembers(
-        project.project_id,
-        (projectId, debuggerids) => {
-          this.setState({selectedProjectDebugerIds: debuggerids})
-          this._getProjectBugs(projectId, debuggerids);
+      this.setState(
+        ()=> {
+          return {
+          selectReceiveFromList: [],
+          // projectSimpleLineCharts: [],
+          selectProjectBugs: [],
+          selectedProjectIdx: index,
+          fetchPage: 1,
+          selectedProject: project,
+          noMoreBugsVisible: "hidden",
+          noBugsVisible: "hidden",
+          nextButtonVisible: "visible"
+          }
+        },
+        ()=>{
+          this._getProjectMembers(
+          project.project_id,
+          (projectId, debuggerids) => {
+            this.setState({selectedProjectDebugerIds: debuggerids})
+            this._getProjectBugs(projectId, debuggerids);
+          }
+          );
         }
       );
     // }
