@@ -75,7 +75,7 @@ body {
 
 .ttContent2 {
   width: 1000px;
-  margin-top: 20px;
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -85,8 +85,8 @@ body {
 .ttContent2-div {
   /* background-color: #A8AAAC; */
   flex: 1;
-  height: 200px;
-  margin-bottom: 10px;
+  height: 150px;
+  margin-bottom: 100px;
   text-align: center;
   border-radius: 5px;
   display: flex;
@@ -94,29 +94,31 @@ body {
 
 .ttContent2-div-image {
   display: flex;
-  width: 400px;
+  width: 110px;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   /* background-color: rebeccapurple */
 }
 
 .ttContent2-div-right-div {
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   color: gray;
   flex-direction: column;
   display: flex;
   flex: 1;
-  margin-left: 0px
+  margin-left: 20px;
+  /* background-color: #3B67BC */
 }
 
 .ttContent2-div-right-div-title {
-  margin-top: 15px;
   font-size: 18px;
+  color: black
 }
 
 .ttContent2-div-right-div-content {
   width: 400px;
-  margin-top: 20px;
+  margin-top: 10px;
   font-size: 16px;
+  text-align: start;
 }
