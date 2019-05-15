@@ -4,7 +4,7 @@
  * @flow 
  * @Date: 2019-05-13 11:27:07 
  * @Last Modified by: Young
- * @Last Modified time: 2019-05-15 12:28:00
+ * @Last Modified time: 2019-05-15 16:03:41
  */
 import React from 'react'
 import {
@@ -174,7 +174,7 @@ export default class Report extends React.Component {
               );
             })}
           </LineChart>
-          <PieChart width={670} height={300}>
+          <PieChart width={670} height={350}>
             <Legend verticalAlign={"top"} />
             <Pie
               data={this.state.pieChartData}
