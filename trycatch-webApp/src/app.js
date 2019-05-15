@@ -4,7 +4,7 @@
  * @flow 
  * @Date: 2018-04-23 15:31:55 
  * @Last Modified by: Young
- * @Last Modified time: 2019-05-15 14:53:02
+ * @Last Modified time: 2019-05-15 15:04:55
  */
 import React from "react";
 import "./app.css";
@@ -268,7 +268,7 @@ export default class Main extends React.Component {
             >
               <Link
                 to={`/project/edit/${this.state.ttd}/${
-                  this.state.selectedProject.project_id
+                  item.project_id
                 }`}
               >
                 <img className="settingImg" src={settingImg} alt="" />
