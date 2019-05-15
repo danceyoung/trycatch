@@ -4,7 +4,7 @@
  * @flow 
  * @Date: 2018-04-23 15:31:55 
  * @Last Modified by: Young
- * @Last Modified time: 2019-05-14 10:46:04
+ * @Last Modified time: 2019-05-15 14:53:02
  */
 import React from "react";
 import "./app.css";
@@ -184,11 +184,13 @@ export default class Main extends React.Component {
     );
   }
 
-  _projectItemOnClick(event, project) {
-    if (project.project_id !== this.state.selectedProject.project_id) {
+  _projectItemOnClick(event, project, index) {
+    // if (project.project_id !== this.state.selectedProject.project_id) {
       this.setState({
         selectReceiveFromList: [],
+        // projectSimpleLineCharts: [],
         selectProjectBugs: [],
+        selectedProjectIdx: index,
         fetchPage: 1,
         selectedProject: project,
         noMoreBugsVisible: "hidden",
@@ -203,7 +205,7 @@ export default class Main extends React.Component {
           this._getProjectBugs(projectId, debuggerids);
         }
       );
-    }
+    // }
   }
 
   _createProjects() {
@@ -222,7 +224,7 @@ export default class Main extends React.Component {
                 }
               : null
           }
-          onClick={event => this._projectItemOnClick(event, item)}
+          onClick={event => this._projectItemOnClick(event, item, index)}
         >
           <div className="projectTitleDiv">{item.project_name}</div>
           <div
