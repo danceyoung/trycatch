@@ -4,7 +4,7 @@
  * @flow 
  * @Date: 2018-09-17 12:09:33 
  * @Last Modified by: Young
- * @Last Modified time: 2019-04-17 11:13:53
+ * @Last Modified time: 2019-05-16 12:32:50
  */
 import React from "react";
 import "./setting.css";
@@ -143,7 +143,7 @@ export default class Setting extends React.Component {
                 className="changePasswordDiv"
                 style={{ backgroundColor: "red", marginTop: 60 }}
               >
-                logout
+                Sign out
               </div>
             </Link>
           </div>
