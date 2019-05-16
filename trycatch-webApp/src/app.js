@@ -4,7 +4,7 @@
  * @flow 
  * @Date: 2018-04-23 15:31:55 
  * @Last Modified by: Young
- * @Last Modified time: 2019-05-15 16:58:37
+ * @Last Modified time: 2019-05-16 10:12:35
  */
 import React from "react";
 import "./app.css";
@@ -461,23 +461,29 @@ export default class Main extends React.Component {
                           return (
                             <div
                               className="bugDiv"
-                              key={`${ele.user_id}${index}`}
+                              key={`${
+                                ele.user_id
+                              }${index}`}
                             >
                               <div className="bugAuthorDiv">
-                                <img
-                                  className="avatar"
-                                  src={avatarImg}
-                                  alt=""
-                                />
-                                debugged by {ele.alias}
+                                <div className="avatar">
+                                  {ele.alias
+                                    .substr(0, 1)
+                                    .toLocaleUpperCase()}
+                                </div>
+                                debugged by{" "}
+                                {ele.alias}
                               </div>
                               <Link
                                 onClick={event => {
                                   this.setState({
-                                    selectedBug: ele.content
+                                    selectedBug:
+                                      ele.content
                                   });
                                 }}
-                                to={`${this.props.match.url}/fullscreenbug`}
+                                to={`${
+                                  this.props.match.url
+                                }/fullscreenbug`}
                                 className="bugContentLink"
                               >
                                 <div className="bugContentDiv">

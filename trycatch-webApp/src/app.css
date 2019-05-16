@@ -4,7 +4,7 @@
  * @flow 
  * @Date: 2018-05-31 16:26:22 
  * @Last Modified by: Young
- * @Last Modified time: 2019-05-07 15:41:16
+ * @Last Modified time: 2019-05-16 10:18:37
  */
 
 .superDiv {
@@ -196,6 +196,13 @@
   height: 30px;
   margin-right: 10px;
   border-radius: 3px;
+  background-color: var(--normal-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* font-weight: bold; */
+  color: #4E555E;
+  font-size: 17px;
 }
 
 .bugContentDiv {
