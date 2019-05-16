@@ -209,7 +209,7 @@
                                 <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="退出">
+                                <state key="normal" title="Sign out">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -222,8 +222,9 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Real-time with no special SDKs monitoring, notifying and aggregating application exceptions for coders." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ig7-7Q-wd3">
-                                <rect key="frame" x="10" y="209" width="355" height="54"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ig7-7Q-wd3">
+                                <rect key="frame" x="10" y="209" width="355" height="90"/>
+                                <string key="text">The TryCatch app will receiving and displaying data pushed and collected from TRYCATCH that Real-time with no special SDKs monitoring, notifying and aggregating application exception for backend coders.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -233,15 +234,17 @@
                         <constraints>
                             <constraint firstItem="iLI-Bh-W7v" firstAttribute="leading" secondItem="01d-Wb-iPB" secondAttribute="leading" constant="10" id="CJw-z1-jyd"/>
                             <constraint firstItem="xmn-3T-AhZ" firstAttribute="centerX" secondItem="01d-Wb-iPB" secondAttribute="centerX" id="Dyn-Ox-a4d"/>
-                            <constraint firstAttribute="trailing" secondItem="ig7-7Q-wd3" secondAttribute="trailing" constant="10" id="LLy-5H-poy"/>
+                            <constraint firstItem="ig7-7Q-wd3" firstAttribute="leading" secondItem="01d-Wb-iPB" secondAttribute="leading" constant="10" id="Ecc-zs-2J5"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ig7-7Q-wd3" secondAttribute="trailing" id="LLy-5H-poy"/>
                             <constraint firstItem="QXU-Yv-wIn" firstAttribute="leading" secondItem="01d-Wb-iPB" secondAttribute="leading" constant="20" id="LeX-bp-jZg"/>
                             <constraint firstItem="fgy-9J-1e9" firstAttribute="top" secondItem="xmn-3T-AhZ" secondAttribute="bottom" constant="14" id="Pfn-wp-vsC"/>
                             <constraint firstItem="01d-Wb-iPB" firstAttribute="bottom" secondItem="QXU-Yv-wIn" secondAttribute="bottom" constant="80" id="SP7-of-xLc"/>
+                            <constraint firstItem="01d-Wb-iPB" firstAttribute="trailing" secondItem="ig7-7Q-wd3" secondAttribute="trailing" constant="10" id="UA6-Ze-cQf"/>
                             <constraint firstItem="xmn-3T-AhZ" firstAttribute="top" secondItem="01d-Wb-iPB" secondAttribute="top" constant="30" id="UG2-Vl-8F3"/>
                             <constraint firstItem="01d-Wb-iPB" firstAttribute="trailing" secondItem="QXU-Yv-wIn" secondAttribute="trailing" constant="20" id="WGQ-SF-hzr"/>
                             <constraint firstItem="fgy-9J-1e9" firstAttribute="centerX" secondItem="01d-Wb-iPB" secondAttribute="centerX" id="Wj8-fA-Jro"/>
                             <constraint firstItem="01d-Wb-iPB" firstAttribute="trailing" secondItem="iLI-Bh-W7v" secondAttribute="trailing" constant="10" id="iQh-Yh-a1Z"/>
-                            <constraint firstItem="ig7-7Q-wd3" firstAttribute="leading" secondItem="kfE-Pk-cSc" secondAttribute="leading" constant="10" id="myc-we-J2K"/>
+                            <constraint firstItem="ig7-7Q-wd3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kfE-Pk-cSc" secondAttribute="leading" id="myc-we-J2K"/>
                             <constraint firstItem="01d-Wb-iPB" firstAttribute="bottom" secondItem="iLI-Bh-W7v" secondAttribute="bottom" constant="15" id="nNv-Zb-0WI"/>
                             <constraint firstItem="ig7-7Q-wd3" firstAttribute="centerX" secondItem="01d-Wb-iPB" secondAttribute="centerX" id="p13-2g-ecm"/>
                             <constraint firstItem="ig7-7Q-wd3" firstAttribute="top" secondItem="fgy-9J-1e9" secondAttribute="bottom" constant="10" id="zuN-UR-veB"/>
