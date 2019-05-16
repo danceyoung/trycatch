@@ -4,13 +4,14 @@
  * @flow 
  * @Date: 2018-09-19 10:51:57 
  * @Last Modified by: Young
- * @Last Modified time: 2019-04-17 14:04:32
+ * @Last Modified time: 2019-05-16 13:15:21
  */
 import React from "react";
 import "./header.css";
 import { Link } from "react-router-dom";
 import logoImg from "../imgs/ttlogo1.png";
 import accountImg from "../imgs/accountimg.png";
+import githubImg from "../imgs/github.png"
 import Setting from "../account/setting";
 import NetClient from "../network/netclient";
 import "../constant";
@@ -77,6 +78,12 @@ export default class Header extends React.Component {
                 style={{ width: 15, height: 15 }}
               />
             </Link>
+            <a style={{marginLeft: 5}}
+              target="_blank"
+              href={"https://github.com/danceyoung/trycatch"}
+            >
+              <img alt="github repository" src={githubImg} style={{ width: 25, height: 25 }} />
+            </a>
           </div>
         </div>
         <div style={{ visibility: this.state.settingViewVisibility }}>
