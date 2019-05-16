@@ -4,7 +4,7 @@
  * @flow 
  * @Date: 2018-04-23 15:31:55 
  * @Last Modified by: Young
- * @Last Modified time: 2019-05-16 10:12:35
+ * @Last Modified time: 2019-05-16 13:18:15
  */
 import React from "react";
 import "./app.css";
@@ -12,7 +12,6 @@ import { Link } from "react-router-dom";
 import Header from "./widget/header";
 import sourceCodeImg from "./imgs/source-code.png";
 import memberImg from "./imgs/member.png";
-import avatarImg from "./imgs/mask.png";
 import settingImg from "./imgs/setting.png";
 import NetClient from "./network/netclient";
 import "./constant";
@@ -104,7 +103,7 @@ export default class Main extends React.Component {
               debugger_ids: debuggerids
             },
             res => {
-              if (res.msg.code == 0) {
+              if (res.msg.code === 0) {
                 this.state.projectSimpleLineCharts[idx] = res.chart.map(ele=>{return {yvalue: ele}});
                 this.setState((state)=>{
                   return {
