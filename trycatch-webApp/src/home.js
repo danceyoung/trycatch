@@ -4,7 +4,7 @@
  * @flow 
  * @Date: 2018-06-21 17:10:49 
  * @Last Modified by: Young
- * @Last Modified time: 2019-05-09 10:25:11
+ * @Last Modified time: 2019-05-16 15:04:20
  */
 import React from "react";
 import { Link } from "react-router-dom";
@@ -84,7 +84,7 @@ export default class Home extends React.Component {
             <p />
             <p style={{ marginRight: 20 }}>
               Real-time with no special SDKs monitoring, notifying and
-              aggregating application exceptions for coders.
+              aggregating application exceptions for backend coders.
             </p>
             {/* <p>
               Try catching exception or other necessary information inside your
