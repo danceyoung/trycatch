@@ -22,6 +22,16 @@ Trycatch consists of four parts:
 
  
  ![architecture](https://github.com/danceyoung/trycatch/blob/master/resource/architecture.png?raw=true)
+ ## Quick Start with a demo
+ 
+
+ 1. Sign in TryCatch
+ 2. Manage the demo project
+ 3. Download a demo java jar and run
+ The jar will generating errors random and outputting to logfile.
+ 5. Download Apache Flume
+ 6. Configure Flume and start TryCatch agent
+
  
 ## License
 Trycatch is [MIT licensed](https://github.com/danceyoung/trycatch/blob/master/LICENSE)
