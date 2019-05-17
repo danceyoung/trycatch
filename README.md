@@ -17,7 +17,7 @@ GitHub Page Website of TryCatch http://danceyoung.github.io/trycatchfinally/
  > TryCatch App and Web site all will real-time show the information summary or detail through different charts.
  
  - Finally solve
- Errors are found in your applications, finally you will solve these errors. If you can't solve, you can open them to seek helps, for example opening to StackOverFlow.
+> Errors are found in your applications, finally you will solve these errors. If you can't solve, you can open them to seek helps, for example opening to StackOverFlow.
 
 ## Architecture
 Trycatch consists of four parts:
