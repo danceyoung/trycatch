@@ -1,9 +1,9 @@
 > Written with [StackEdit](https://stackedit.io/).
 # Trycatch
-Real-time with no special SDKs monitoring, notifying and aggregating application exception for coders.
+Real-time with no special SDKs monitoring, notifying and aggregating application exception for backend coders.
+
 GitHub Page Website of TryCatch http://danceyoung.github.io/trycatchfinally/
-## Demo
-[The demo video from Youku, please click me.](http://v.youku.com/v_show/id_XNDAzNTM2MDczNg==.html?sharekey=dac00b25c3019b42c71384f2b5a9bf8b0) 
+
 ![enter image description here](https://github.com/danceyoung/trycatch/blob/master/resource/cover.png?raw=true)
 
 ## Architecture
@@ -16,12 +16,12 @@ Trycatch consists of four parts:
  
  ![architecture](https://github.com/danceyoung/trycatch/blob/master/resource/architecture.png?raw=true)
  ### backend server
- Implemented by golang, providing APIs for the other parts, and reading/writing datas from/into mysql database.
+ Implemented by golang, providing APIs service and Push Notification service etc. .
  ### frontend web app
-Implemented by reactjs, a system platform provides intereactive user interface for administrator or normal user.
+Implemented by reactjs, providing intereactive user interface for administrator or normal user.
  - register account
- - manage your project. Add, edit and delete project/project member and so on
- - browse your or user allowed to browse for yourself activity and report
+ - manage your projects, members information and access token for per-member etc. 
+ - browse activity and charts report of projects relevant you
  - ...
  ### mobile app
  Another way to browse activity and report by real-time through Push Notification Server, supporting iOS and Android mobile.
