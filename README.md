@@ -39,8 +39,12 @@ Trycatch consists of four parts:
  
 
  1. Sign in TryCatch
+> Open http://danceyoung.github.io/trycatchfinally/ and sign in with a account that username is `danceyoung@hotmail.com`, password is `diaper`
+
  2. Manage the demo project
- 3. Download a demo java jar and run
+> ![access token](https://github.com/danceyoung/trycatch/blob/master/resource/accesstokendemo.png?raw=true)
+
+ 4. Download a demo java jar and run
  The jar will generating errors random and outputting to logfile.
  5. Download Apache Flume
  6. Configure Flume and start TryCatch agent
