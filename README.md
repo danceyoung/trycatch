@@ -39,8 +39,9 @@ Trycatch consists of four parts:
  
 
  1. **Prerequisite**
- - 64bit OS, Linux/Unix/Mac
- - 64bit JDK 1.8+
+ > - 64bit OS, Linux/Unix/Mac
+ > - 64bit JDK 1.8+
+ > - Available network connect
 2. **Download demo**
 
 > Download [demo](https://pan.baidu.com/s/1GV4Dtu6wpmROX_PDfiWf8Q) 
@@ -53,29 +54,25 @@ Trycatch consists of four parts:
 > - `cd apache-flume-1.8.0-bin/bin`, then run  `./diaper.h`
 
 3. **Sign in TryCatch**
+
 >  - Open http://danceyoung.github.io/trycatchfinally/  or iOS app [TryCatch], sign in with a account that username is `danceyoung@hotmail.com`, password is
    `diaper`
 > - Click the project "TryCatch Project Test", then browse the bug list and charts
 ## Developing custom components
+ - diaper-flume-conf.properties
+> 
+> A config file that watch the specified files, and tail them in nearly real-time once detected new lines appended to the each files. Please link Apache Flume official doc http://flume.apache.org/releases/content/1.9.0/FlumeUserGuide.html#taildir-source
+> You may care about `agent.sources.loggerSource.filegroups` to config the logfiles wathed.
+
  - Manage the demo project
 
 > ![access token](https://github.com/danceyoung/trycatch/blob/master/resource/accesstokendemo.png?raw=true)
 Copy content in the 3 step, then you need to write the value to your application. 
- 3. Download a demo java jar and run `java -jar xxx`
-> The jar will generating errors random and outputting to logfile. 
-> Assuming this is your backend application, and output the exceptions to logfiles. Now you have to do is adding a json string to your log content, the json string contains `ttf_access_token` and `ttf_log_timestamp` properties.   
-> `ttf_access_token` is the value copied in the prior step,  
+- Your backend application
+> Assuming the jar of demo is your backend applicaiont, you have to do is adding a json string to your log content, the json string contains `ttf_access_token` and `ttf_log_timestamp` properties.   
+> `ttf_access_token` is the value copied in the part of "Manage the demo project",  
 > `ttf_log_timestamp` is the number of milliseconds of now date. 
-> The source code is in [demo source code](https://github.com/danceyoung/trycatch/tree/master/demo) and demo java jar package [demo java jar ](https://github.com/danceyoung/trycatch/blob/master/demo/generror-1.0-SNAPSHOT-jar-with-dependencies.jar)
-
- 
- 4. Download Apache Flume
-
->  Download [Apache Flume](http://www.apache.org/dyn/closer.lua/flume/1.9.0/apache-flume-1.9.0-bin.tar.gz) then unzip a directory.
-
- 
- 6. Configure Flume and start TryCatch agent
-
+> The source code is in [demo source code](https://github.com/danceyoung/trycatch/tree/master/demo) 
  
 ## License
 Trycatch is [MIT licensed](https://github.com/danceyoung/trycatch/blob/master/LICENSE)
