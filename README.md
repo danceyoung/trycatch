@@ -44,7 +44,7 @@ Trycatch consists of four parts:
  > - Available network connect
 2. **Download demo**
 
-> Download [demo](https://pan.baidu.com/s/1GV4Dtu6wpmROX_PDfiWf8Q) 
+> Download [demo](https://pan.baidu.com/s/19-5b2MTtf4gCvGkaiSlVQw) 
 > - `copy demo.tar.gz to a directory and tar -zxvf demo.tar.gz`
 > - run `java -jar ./generror-1.0-SNAPSHOT-jar-with-dependencies.jar`
 > - `cd apache-flume-1.8.0-bin/bin`, then run  `./diaper.h`
