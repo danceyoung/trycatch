@@ -49,7 +49,8 @@ Copy content in the 3 step, then you need to write the value to your application
 > The jar will generating errors random and outputting to logfile. 
 > Assuming this is your backend application, and output the exceptions to logfiles. Now you have to do is adding a json string to your log content, the json string contains `ttf_access_token` and `ttf_log_timestamp` properties.   
 > `ttf_access_token` is the value copied in the prior step,  
-> `ttf_log_timestamp` is the number of milliseconds of now date.  The source code is in [demo source code](https://github.com/danceyoung/trycatch/tree/master/demo) and demo java jar package [demo java jar ](https://github.com/danceyoung/trycatch/blob/master/demo/generror-1.0-SNAPSHOT-jar-with-dependencies.jar)
+> `ttf_log_timestamp` is the number of milliseconds of now date. 
+> The source code is in [demo source code](https://github.com/danceyoung/trycatch/tree/master/demo) and demo java jar package [demo java jar ](https://github.com/danceyoung/trycatch/blob/master/demo/generror-1.0-SNAPSHOT-jar-with-dependencies.jar)
 
  
  4. Download Apache Flume
