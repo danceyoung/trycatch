@@ -38,10 +38,26 @@ Trycatch consists of four parts:
  ## Quick Start with a demo
  
 
- 1. Sign in TryCatch
-> Open http://danceyoung.github.io/trycatchfinally/ and sign in with a account that username is `danceyoung@hotmail.com`, password is `diaper`
+ 1. **Prerequisite**
+ - 64bit OS, Linux/Unix/Mac
+ - 64bit JDK 1.8+
+2. **Download demo**
 
- 2. Manage the demo project
+> Download [demo](https://pan.baidu.com/s/1GV4Dtu6wpmROX_PDfiWf8Q) 
+> - `copy demo.tar.gz to a directory and tar -zxvf demo.tar.gz`
+   > eg:
+   > ./demoware
+   	> apache-flume-1.8.0-bin
+   	> generror-1.0-SNAPSHOT-jar-with-dependencies.jar
+> - run `java -jar ./generror-1.0-SNAPSHOT-jar-with-dependencies.jar`
+> - `cd apache-flume-1.8.0-bin/bin`, then run  `./diaper.h`
+
+3. **Sign in TryCatch**
+>  - Open http://danceyoung.github.io/trycatchfinally/  or iOS app [TryCatch], sign in with a account that username is `danceyoung@hotmail.com`, password is
+   `diaper`
+> - Click the project "TryCatch Project Test", then browse the bug list and charts
+## Developing custom components
+ - Manage the demo project
 
 > ![access token](https://github.com/danceyoung/trycatch/blob/master/resource/accesstokendemo.png?raw=true)
 Copy content in the 3 step, then you need to write the value to your application. 
