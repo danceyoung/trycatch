@@ -65,10 +65,10 @@ Trycatch consists of four parts:
 > ![access token](https://github.com/danceyoung/trycatch/blob/master/resource/accesstokendemo.png?raw=true)
 Copy content in the 3 step, then you need to write the value to your application. 
 - Your backend application
-> Assuming the jar of demo is your backend applicaiont, you have to do is adding a json string to your log content, the json string contains `ttf_access_token` and `ttf_log_timestamp` properties.   
+> Assuming the jar of demo is your backend application, you have to do is adding a json string to your log content, the json string contains `ttf_access_token` and `ttf_log_timestamp` properties.   
 > `ttf_access_token` is the value copied in the part of "Manage the demo project",  
 > `ttf_log_timestamp` is the number of milliseconds of now date. 
-> The source code is in [demo source code](https://github.com/danceyoung/trycatch/tree/master/demo) 
+> The source code is in [demo source code](https://github.com/danceyoung/trycatch/blob/master/demo/src/main/java/com/trycatch/GenError.java) 
  
 ## License
 Trycatch is [MIT licensed](https://github.com/danceyoung/trycatch/blob/master/LICENSE)
