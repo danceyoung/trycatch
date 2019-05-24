@@ -4,7 +4,7 @@
  * @flow 
  * @Date: 2018-06-21 17:10:49 
  * @Last Modified by: Young
- * @Last Modified time: 2019-05-16 15:04:20
+ * @Last Modified time: 2019-05-24 15:33:01
  */
 import React from "react";
 import { Link } from "react-router-dom";
@@ -19,6 +19,7 @@ import realtimeImg from "./imgs/realtime.png"
 import pushnotifyImg from "./imgs/pushnotification.png"
 import analyzesImg from "./imgs/analyzes.png"
 import sloveImg from "./imgs/slove.png"
+import iOSQRImg from "./imgs/iOSQR.png"
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -86,6 +87,15 @@ export default class Home extends React.Component {
               Real-time with no special SDKs monitoring, notifying and
               aggregating application exceptions for backend coders.
             </p>
+            <div style={{fontSize: 12,}}>
+              <img
+                alt=""
+                src={iOSQRImg}
+                style={{ width: 60, height: 60 }}
+              />
+              <div>App Store</div>
+            </div>
+
             {/* <p>
               Try catching exception or other necessary information inside your
               application,
@@ -164,8 +174,8 @@ export default class Home extends React.Component {
           </div>
         </div>
         <section className="ttContent2">
-          <div style={{flex: 1, display: 'flex', flexDirection: 'row'}}>
-            <div className="ttContent2-div" style={{marginLeft: -20}}>
+          <div style={{ flex: 1, display: "flex", flexDirection: "row" }}>
+            <div className="ttContent2-div" style={{ marginLeft: -20 }}>
               <div className="ttContent2-div-image">
                 <img
                   alt=""
@@ -183,7 +193,7 @@ export default class Home extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="ttContent2-div" style={{marginLeft: 20}}>
+            <div className="ttContent2-div" style={{ marginLeft: 20 }}>
               <div className="ttContent2-div-image">
                 <img
                   alt=""
@@ -205,8 +215,8 @@ export default class Home extends React.Component {
             </div>
           </div>
 
-          <div style={{flex: 1, display: 'flex', flexDirection: 'row'}}>
-            <div className="ttContent2-div" style={{marginLeft: -20}}>
+          <div style={{ flex: 1, display: "flex", flexDirection: "row" }}>
+            <div className="ttContent2-div" style={{ marginLeft: -20 }}>
               <div className="ttContent2-div-image">
                 <img
                   alt=""
@@ -219,13 +229,13 @@ export default class Home extends React.Component {
                   Push Notifications
                 </div>
                 <div className="ttContent2-div-right-div-content">
-                  Now we have TryCatch APP for iOS, you can download, install
-                  and login APP, upon receipt of information related you will
-                  be immediately sent to your smart phone.
+                  Now we have TryCatch APP for iOS, you can download,
+                  install and login APP, upon receipt of information related
+                  you will be immediately sent to your smart phone.
                 </div>
               </div>
             </div>
-            <div className="ttContent2-div" style={{marginLeft: 20}}>
+            <div className="ttContent2-div" style={{ marginLeft: 20 }}>
               <div className="ttContent2-div-image">
                 <img
                   alt=""
@@ -244,7 +254,7 @@ export default class Home extends React.Component {
               </div>
             </div>
           </div>
-          <div className="ttContent2-div" style={{marginLeft: -20}}>
+          <div className="ttContent2-div" style={{ marginLeft: -20 }}>
             <div className="ttContent2-div-image">
               <img
                 alt=""
