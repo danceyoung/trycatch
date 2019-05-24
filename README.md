@@ -51,7 +51,7 @@ Trycatch consists of four parts:
 
 3. **Sign in TryCatch**
 
->  - Open http://danceyoung.github.io/trycatchfinally/  or iOS app [TryCatch], sign in with a account that username is `danceyoung@hotmail.com`, password is
+>  - Open http://danceyoung.github.io/trycatchfinally/  or [iOS app \[TryCatch\]](https://itunes.apple.com/cn/app/trycatch/id1463000084?mt=8) sign in with a account that username is `danceyoung@hotmail.com`, password is
    `diaper`
 > - Click the project "TryCatch Project Test", then browse the bug list and charts
 ## Developing custom components
