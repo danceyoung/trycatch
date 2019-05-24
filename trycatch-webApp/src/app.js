@@ -1,10 +1,10 @@
 /*
  * @Author: Young
  * DSHARP
- * @flow 
- * @Date: 2018-04-23 15:31:55 
+ * @flow
+ * @Date: 2018-04-23 15:31:55
  * @Last Modified by: Young
- * @Last Modified time: 2019-05-16 13:18:15
+ * @Last Modified time: 2019-05-24 14:45:35
  */
 import React from "react";
 import "./app.css";
@@ -18,11 +18,8 @@ import "./constant";
 import Route from "react-router-dom/Route";
 import FullScreenBug from "./project/fullscreenbug.js";
 import Setting from "./account/setting";
-import {
-  LineChart,
-  Line
-} from "recharts";
-import PReport from "./project/projectlinechart.js"
+import { LineChart, Line } from "recharts";
+import PReport from "./project/projectlinechart.js";
 // var Tesseract = window.Tesseract;
 
 export default class Main extends React.Component {
@@ -31,12 +28,10 @@ export default class Main extends React.Component {
 
     this.state = {
       projects: [],
-      projectSimpleLineCharts: [],
-      selectedProject: null,
+      projectsSimpleLineCharts: [],
       selectedProjectIdx: 0,
-      selectedProjectDebugerIds:[],
-      selectReceiveFromList: [],
-      selectProjectBugs: [],
+      selectedProjectReceiveFromList: [],
+      selectedProjectBugs: [],
       selectedBug: "",
       activityDivSelected: true,
 
@@ -47,12 +42,13 @@ export default class Main extends React.Component {
       fetchPage: 1,
 
       noMoreBugsVisible: "hidden",
-      noBugsVisible: "hidden"
+      noBugsVisible: "hidden",
+
+      noBugAlert: global.tt_constant.main_no_bugs
     };
   }
 
   componentDidMount() {
-
     console.log("params " + JSON.stringify(this.props));
     NetClient.netPost(
       global.tt_constant.net_url_projects,
@@ -64,23 +60,19 @@ export default class Main extends React.Component {
             errorAlertInfo: response.msg.content
           });
         } else {
-          this._getProjectMembers(
-            response.projects[0].project_id, 
-            (projectId, debuggerids)=>{
-              this.setState({
-                selectedProjectDebugerIds: debuggerids
-              })
-              this._getProjectBugs(projectId, debuggerids)
+          this.setState(
+            () => {
+              return {
+                projects: response.projects,
+                selectedProjectIdx: 0,
+                noProjects: false
+              };
+            },
+            () => {
+              this._getCurrentProjectBugs();
+              this._getAllProjectBugLineChartsData();
             }
-            );
-          this.setState(() => {
-            return {
-              projects: response.projects,
-              selectedProject: response.projects[0],
-              noProjects: false
-            }
-          },
-          () => {this._getBugSimpleLineChartsData()});
+          );
         }
       }
     );
@@ -89,50 +81,70 @@ export default class Main extends React.Component {
     });
   }
 
-  _getBugSimpleLineChartsData() {
+  _getCurrentProjectBugs() {
+    this._getProjectMembers(
+      this.state.projects[this.state.selectedProjectIdx].project_id,
+      (projectId, debuggerids) => {
+        this._getProjectBugs(projectId, debuggerids);
+      }
+    );
+  }
+
+  _getAllProjectBugLineChartsData() {
+    this.state.projects.map((project, idx) => {
+      this._getBugSimpleLineChartsData(project, idx);
+    });
+  }
+
+  _getBugSimpleLineChartsData(ele, idx) {
     // console.log("getbugsimplelinechartsdata "+JSON.stringify(this.state.projects))
-    this.state.projects.map((ele, idx) => {
-      this._getProjectMembers(
-        ele.project_id,
-        (projectId, debuggerids)=>{
-          NetClient.netPost(
-            global.tt_constant.net_url_projectbugschart,
-            {
-              uid: ele.created_by,
-              project_id: projectId,
-              debugger_ids: debuggerids
-            },
-            res => {
-              if (res.msg.code === 0) {
-                this.state.projectSimpleLineCharts[idx] = res.chart.map(ele=>{return {yvalue: ele}});
-                this.setState((state)=>{
-                  return {
-                    projectSimpleLineCharts: state.projectSimpleLineCharts
-                  }
-                })
-                // console.log("linechart "+idx + JSON.stringify(res.chart))
-              }
-            }
-          );
+    this._getProjectMembers(ele.project_id, (projectId, debuggerids) => {
+      NetClient.netPost(
+        global.tt_constant.net_url_projectbugschart,
+        {
+          uid: ele.created_by,
+          project_id: projectId,
+          debugger_ids: debuggerids
+        },
+        res => {
+          if (res.msg.code === 0) {
+            var tempLineCharts = this.state.projectsSimpleLineCharts;
+            tempLineCharts[idx] = res.chart.map(ele => {
+              return { yvalue: ele };
+            });
+            this.setState({
+              projectsSimpleLineCharts: tempLineCharts
+            });
+            // console.log("linechart "+idx + JSON.stringify(res.chart))
+          }
         }
-        )
-    })
+      );
+    });
   }
 
   _getProjectMembers(projectId, callback) {
     NetClient.netPost(
       global.tt_constant.net_url_receivefromlist,
       {
-        uid: this.props.match.params.ttd,
+        uid: this.state.ttd,
         project_id: projectId
       },
       response => {
         if (response.msg.code !== 0) {
+          if (response.msg.code === 20 && projectId === this.state.projects[this.state.selectedProjectIdx].project_id) {
+            this.setState({
+              noBugsVisible: "visible",
+              noBugAlert: response.msg.content
+            });
+          }
         } else {
           // console.log(JSON.stringify(response.receivefromlist))
-          if (projectId === this.state.selectedProject.project_id) {
+          if (
+            projectId ===
+            this.state.projects[this.state.selectedProjectIdx].project_id
+          ) {
             this.setState({
-              selectReceiveFromList: response.receive_from_list.map(
+              selectedProjectReceiveFromList: response.receive_from_list.map(
                 ele => {
                   ele["selected"] = true;
                   return ele;
@@ -140,7 +152,7 @@ export default class Main extends React.Component {
               )
             });
           }
-          
+
           if (callback !== null) {
             callback(
               projectId,
@@ -155,11 +167,10 @@ export default class Main extends React.Component {
   }
 
   _getProjectBugs(projectId, debuggerids) {
-
     NetClient.netPost(
       global.tt_constant.net_url_projectbugs,
       {
-        uid: this.props.match.params.ttd,
+        uid: this.state.ttd,
         project_id: projectId,
         debugger_ids: debuggerids,
         fetch_page: this.state.fetchPage
@@ -169,7 +180,8 @@ export default class Main extends React.Component {
           if (response.msg.code === global.tt_constant.msg_no_more_code) {
             if (this.state.fetchPage === 1) {
               this.setState({
-                noBugsVisible: "visible"
+                noBugsVisible: "visible",
+                noBugAlert: global.tt_constant.main_no_bugs
               });
             } else if (this.state.fetchPage > 1) {
               this.setState({ noMoreBugsVisible: "visible" });
@@ -179,7 +191,9 @@ export default class Main extends React.Component {
           // console.log(JSON.stringify(response.receivefromlist))
           this.setState(state => {
             return {
-              selectProjectBugs: state.selectProjectBugs.concat(response.bugs),
+              selectedProjectBugs: state.selectedProjectBugs.concat(
+                response.bugs
+              ),
               fetchPage: state.fetchPage + 1
             };
           });
@@ -190,30 +204,29 @@ export default class Main extends React.Component {
 
   _projectItemOnClick(event, project, index) {
     // if (project.project_id !== this.state.selectedProject.project_id) {
-      this.setState(
-        ()=> {
-          return {
-          selectReceiveFromList: [],
+    this.setState(
+      () => {
+        return {
+          selectedProjectReceiveFromList: [],
           // projectSimpleLineCharts: [],
-          selectProjectBugs: [],
+          selectedProjectBugs: [],
           selectedProjectIdx: index,
           fetchPage: 1,
-          selectedProject: project,
           noMoreBugsVisible: "hidden",
           noBugsVisible: "hidden",
           nextButtonVisible: "visible"
-          }
-        },
-        ()=>{
-          this._getProjectMembers(
+        };
+      },
+      () => {
+        this._getProjectMembers(
           project.project_id,
           (projectId, debuggerids) => {
-            this.setState({selectedProjectDebugerIds: debuggerids})
+            this._getBugSimpleLineChartsData(project, index);
             this._getProjectBugs(projectId, debuggerids);
           }
-          );
-        }
-      );
+        );
+      }
+    );
     // }
   }
 
@@ -224,8 +237,8 @@ export default class Main extends React.Component {
           className="projectDiv"
           key={item.project_id}
           style={
-            this.state.selectedProject &&
-            this.state.selectedProject.project_id === item.project_id
+            this.state.projects[this.state.selectedProjectIdx].project_id ===
+            item.project_id
               ? {
                   borderStyle: "solid",
                   borderWidth: 1,
@@ -246,7 +259,7 @@ export default class Main extends React.Component {
             <LineChart
               width={300}
               height={100}
-              data={this.state.projectSimpleLineCharts[index]}
+              data={this.state.projectsSimpleLineCharts[index]}
               margin={{
                 top: 15,
                 right: 10,
@@ -258,8 +271,13 @@ export default class Main extends React.Component {
                 type="monotone"
                 dataKey="yvalue"
                 stroke="lightgray"
-                dot={{r:2, fill: 'gray'}}
-                label={{dy: -10, fill: 'gray', fontSize: 9, textAnchor: "middle"}}
+                dot={{ r: 2, fill: "gray" }}
+                label={{
+                  dy: -10,
+                  fill: "gray",
+                  fontSize: 9,
+                  textAnchor: "middle"
+                }}
               />
             </LineChart>
           </div>
@@ -275,11 +293,7 @@ export default class Main extends React.Component {
                 visibility: item.creator === 0 ? "visible" : "hidden"
               }}
             >
-              <Link
-                to={`/project/edit/${this.state.ttd}/${
-                  item.project_id
-                }`}
-              >
+              <Link to={`/project/edit/${this.state.ttd}/${item.project_id}`}>
                 <img className="settingImg" src={settingImg} alt="" />
               </Link>
             </div>
@@ -295,39 +309,39 @@ export default class Main extends React.Component {
     event.preventDefault();
     console.log(JSON.stringify(debuger));
     debuger.selected = !debuger.selected;
-    await this.setState(state => {
-      return {
-        selectReceiveFromList: state.selectReceiveFromList,
-        selectProjectBugs: [],
-        fetchPage: 1,
-        noMoreBugsVisible: "hidden",
-        noBugsVisible: "hidden"
-      };
-    },
-    () => {
-      var debuggerids = this.state.selectReceiveFromList
-        .filter(ele => ele.selected === true)
-        .map(ele => {
-          return ele.user_id;
-        });
-      this._getProjectBugs(
-        this.state.selectedProject.project_id, debuggerids
-      );
-    }
+    await this.setState(
+      state => {
+        return {
+          selectReceiveFromList: state.selectReceiveFromList,
+          selectedProjectBugs: [],
+          fetchPage: 1,
+          noMoreBugsVisible: "hidden",
+          noBugsVisible: "hidden"
+        };
+      },
+      () => {
+        var debuggerids = this.state.selectedProjectReceiveFromList
+          .filter(ele => ele.selected === true)
+          .map(ele => {
+            return ele.user_id;
+          });
+        this._getProjectBugs(
+          this.state.projects[this.state.selectedProjectIdx].project_id,
+          debuggerids
+        );
+      }
     );
-    
   }
 
   _tabOnClick(event, tabIndex) {
     this.setState({ activityDivSelected: tabIndex === 0 ? true : false });
-    if (tabIndex === 1) {
-      this.setState(
-        {
-          selectedProjectIdx: this.state.projects.indexOf(this.state.selectedProject)
-        }
-      )
-      
-    }
+    // if (tabIndex === 1) {
+    //   this.setState({
+    //     selectedProjectIdx: this.state.projects.indexOf(
+    //       this.state.selectedProject
+    //     )
+    //   });
+    // }
   }
 
   _nextButtonOnClick(event) {
@@ -337,7 +351,7 @@ export default class Main extends React.Component {
         return ele.user_id;
       });
     this._getProjectBugs(
-      this.state.selectedProject.project_id,
+      this.state.projects[this.state.selectedProjectIdx].project_id,
       debuggerids
     );
   }
@@ -429,60 +443,54 @@ export default class Main extends React.Component {
                     component={() => (
                       <div className="activityRootDiv">
                         <div className="debuggedDiv">
-                          {this.state.selectReceiveFromList.map(ele => {
-                            return (
-                              <div
-                                className="debuggedTextDiv"
-                                title={ele.email}
-                                key={ele.email}
-                                style={{
-                                  backgroundColor: ele.selected
-                                    ? global.tt_constant.theme_yellow
-                                    : global.tt_constant
-                                        .theme_debuger_noneselect_color,
-                                  color: ele.selected
-                                    ? "black"
-                                    : global.tt_constant.theme_blue
-                                }}
-                                onClick={event => {
-                                  this._debugerOnClick(event, ele);
-                                }}
-                              >
-                                {ele.alias}
-                              </div>
-                            );
-                          })}
+                          {this.state.selectedProjectReceiveFromList.map(
+                            ele => {
+                              return (
+                                <div
+                                  className="debuggedTextDiv"
+                                  title={ele.email}
+                                  key={ele.email}
+                                  style={{
+                                    backgroundColor: ele.selected
+                                      ? global.tt_constant.theme_yellow
+                                      : global.tt_constant
+                                          .theme_debuger_noneselect_color,
+                                    color: ele.selected
+                                      ? "black"
+                                      : global.tt_constant.theme_blue
+                                  }}
+                                  onClick={event => {
+                                    this._debugerOnClick(event, ele);
+                                  }}
+                                >
+                                  {ele.alias}
+                                </div>
+                              );
+                            }
+                          )}
                         </div>
                         <div style={{ visibility: this.state.noBugsVisible }}>
-                          {global.tt_constant.main_no_bugs}
+                          {this.state.noBugAlert}
                         </div>
-                        {this.state.selectProjectBugs.map((ele, index) => {
+                        {this.state.selectedProjectBugs.map((ele, index) => {
                           return (
                             <div
                               className="bugDiv"
-                              key={`${
-                                ele.user_id
-                              }${index}`}
+                              key={`${ele.user_id}${index}`}
                             >
                               <div className="bugAuthorDiv">
                                 <div className="avatar">
-                                  {ele.alias
-                                    .substr(0, 1)
-                                    .toLocaleUpperCase()}
+                                  {ele.alias.substr(0, 1).toLocaleUpperCase()}
                                 </div>
-                                debugged by{" "}
-                                {ele.alias}
+                                debugged by {ele.alias}
                               </div>
                               <Link
                                 onClick={event => {
                                   this.setState({
-                                    selectedBug:
-                                      ele.content
+                                    selectedBug: ele.content
                                   });
                                 }}
-                                to={`${
-                                  this.props.match.url
-                                }/fullscreenbug`}
+                                to={`${this.props.match.url}/fullscreenbug`}
                                 className="bugContentLink"
                               >
                                 <div className="bugContentDiv">
@@ -518,12 +526,20 @@ export default class Main extends React.Component {
                   />
                   <Route
                     path={`${match.url}/report`}
-                    component={()=>
-                    <PReport 
-                    projectId={this.state.selectedProject.project_id}
-                    debugers={this.state.selectReceiveFromList}
-                    allData={this.state.projectSimpleLineCharts[this.state.selectedProjectIdx]}></PReport>
-                    }
+                    render={() => (
+                      <PReport
+                        projectId={
+                          this.state.projects[this.state.selectedProjectIdx]
+                            .project_id
+                        }
+                        debugers={this.state.selectedProjectReceiveFromList}
+                        allData={
+                          this.state.projectsSimpleLineCharts[
+                            this.state.selectedProjectIdx
+                          ]
+                        }
+                      />
+                    )}
                   />
                   <Route
                     path={`${this.props.match.path}/fullscreenbug`}
