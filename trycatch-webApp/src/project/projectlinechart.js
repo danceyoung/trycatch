@@ -1,12 +1,12 @@
 /*
  * @Author: Young
  * DSHARP
- * @flow 
- * @Date: 2019-05-13 11:27:07 
+ * @flow
+ * @Date: 2019-05-13 11:27:07
  * @Last Modified by: Young
- * @Last Modified time: 2019-05-15 16:21:14
+ * @Last Modified time: 2019-05-24 14:28:30
  */
-import React from 'react'
+import React from "react";
 import {
   LineChart,
   Line,
@@ -23,65 +23,103 @@ import NetClient from "../network/netclient";
 
 export default class Report extends React.Component {
   constructor(props) {
-    super(props)
-    this.state={
-      multipleLineChartData:[],
-      pieChartData:[],
+    super(props);
+    this.state = {
+      multipleLineChartData: [],
+      pieChartData: [],
+      allLineChartData: []
+    };
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.allData !== this.props.allData) {
+      this.setState({
+        allLineChartData: this.props.allData
+      });
     }
+
+    if (this.props.debugers !== prevProps.debugers) {
+      if (this.props.debugers.length > 0) {
+        this._fetchData();
+      }else {
+        this.setState({
+          multipleLineChartData: [],
+          pieChartData: []
+        })
+      }
+    }
+
+    // console.log(
+    //   "log prev " + JSON.stringify(prevProps) + " -- " + JSON.stringify(prevState)
+    // );
+    // console.log(
+    //   "log didupdate this " + JSON.stringify(this.props) + " -- " + JSON.stringify(this.state)
+    // );
+  }
+
+  _fetchData() {
+    var slicePieData = [];
+    var sliceData = [];
+    this.props.debugers.map(debuger => {
+      var propertyName = debuger.alias;
+      NetClient.netPost(
+        global.tt_constant.net_url_projectbugschart,
+        {
+          uid: debuger.user_id,
+          project_id: this.props.projectId,
+          debugger_ids: [debuger.user_id]
+        },
+        response => {
+          if (response.msg.code === 0) {
+            var per_count = 0;
+            if (sliceData.length === 0) {
+              sliceData = response.chart.map((yvalue, idx) => {
+                per_count = per_count + yvalue;
+                var obj = {};
+                obj[propertyName] = yvalue;
+                return obj;
+              });
+            } else {
+              response.chart.map((yvalue, idx) => {
+                per_count = per_count + yvalue;
+                sliceData[idx][propertyName] = yvalue;
+              });
+            }
+
+            slicePieData.push({ name: propertyName, value: per_count });
+
+            this.setState({
+              multipleLineChartData: sliceData,
+              pieChartData: slicePieData
+            });
+          }
+        }
+      );
+    });
   }
 
   componentDidMount() {
-    console.log("projectlinechart "+JSON.stringify(this.props.debugers))
-    this.props.debugers.map(debuger => {
-      var propertyName = debuger.alias
-      NetClient.netPost(global.tt_constant.net_url_projectbugschart, {
-        uid: debuger.user_id,
-        project_id: this.props.projectId,
-        debugger_ids: [debuger.user_id]
-      },
-      response=>{
-        if (response.msg.code === 0) {
-          var per_count = 0
-          var slicePieData = this.state.pieChartData
-          var sliceData = this.state.multipleLineChartData
-          if (sliceData.length === 0) {
-              sliceData = response.chart.map(
-                (yvalue, idx) => {
-                  per_count = per_count + yvalue 
-                  var obj = {}
-                  obj[propertyName] = yvalue
-                  return obj
-                }
-              );
-          }else {
-            response.chart.map((yvalue, idx)=>{
-              per_count = per_count + yvalue;
-              sliceData[idx][propertyName] = yvalue;
-            })
-          }
-        
-          slicePieData.push({name: propertyName, value: per_count})
-
-          this.setState({
-            multipleLineChartData: sliceData,
-            pieChartData: slicePieData,
-          })
-        }
-      });
-    });
+    console.log(
+      "projectlinechart didmount " + JSON.stringify(this.props.debugers)
+    );
+    this._fetchData();
   }
 
   render() {
     console.log(
-      "projectlinechart: " + JSON.stringify(this.state.multipleLineChartData)
+      "log this " +
+        JSON.stringify(this.props) +
+        " -- " +
+        JSON.stringify(this.state)
     );
-    console.log(
-      "projectpiechart: " + JSON.stringify(this.state.pieChartData)
-    );
+    // console.log(
+    //   "projectlinechart render: " + JSON.stringify(this.state.multipleLineChartData)
+    // );
+    // console.log("projectpiechart: " + JSON.stringify(this.state.pieChartData));
     return (
       <div style={{ display: "flex", flex: 1, flexDirection: "column" }}>
         <LineChart
-          data={this.props.allData}
+          data={this.state.allLineChartData}
           width={670}
           height={300}
           margin={{ left: -20, right: 20, top: 20 }}
