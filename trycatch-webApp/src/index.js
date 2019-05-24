@@ -4,7 +4,7 @@
  * @flow
  * @Date: 2018-04-23 15:31:55
  * @Last Modified by: Young
- * @Last Modified time: 2019-05-17 09:52:55
+ * @Last Modified time: 2019-05-23 11:39:26
  */
 import React from "react";
 import ReactDOM from "react-dom";
@@ -15,7 +15,7 @@ import "./index.css";
 import NewProject from "./project/newproject"
 import EditProject from "./project/editproject"
 import { stringify } from "querystring";
-import MobilePrivacy from "./privacy/mobileprivacy"
+// import MobilePrivacy from "./privacy/mobileprivacy"
 // var Tesseract = window.Tesseract;
 export default class TryTryIndex extends React.Component {
   constructor(props) {
@@ -49,7 +49,7 @@ export default class TryTryIndex extends React.Component {
     return <BrowserRouter basename="/trycatchfinally">
         <div className="rootView">
           <Route exact path="/" render={props => <Home {...props} />} />
-          <Route path="/mobileprivacy" component={()=><MobilePrivacy/>}></Route>
+          {/* <Route path="/mobileprivacy" component={()=><MobilePrivacy/>}></Route> */}
           <Route path="/dashboard/:ttd" render={props => <Dashboard {...props} />} />
           <Route path="/project/new/:ttd" render={props => <NewProject {...props} />} />
           <Route path="/project/edit/:ttd/:ttpd" render={props => <EditProject {...props} />} />
