@@ -4,7 +4,7 @@
  * @flow
  * @Date: 2019-05-13 11:27:07
  * @Last Modified by: Young
- * @Last Modified time: 2019-05-24 14:28:30
+ * @Last Modified time: 2019-05-27 16:14:53
  */
 import React from "react";
 import {
@@ -19,7 +19,7 @@ import {
   Pie,
   Cell
 } from "recharts";
-import NetClient from "../network/netclient";
+import FetchData from "../network/fetchData";
 
 export default class Report extends React.Component {
   constructor(props) {
@@ -31,46 +31,19 @@ export default class Report extends React.Component {
     };
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.allData !== this.props.allData) {
-      this.setState({
-        allLineChartData: this.props.allData
-      });
-    }
-
-    if (this.props.debugers !== prevProps.debugers) {
-      if (this.props.debugers.length > 0) {
-        this._fetchData();
-      }else {
-        this.setState({
-          multipleLineChartData: [],
-          pieChartData: []
-        })
-      }
-    }
-
-    // console.log(
-    //   "log prev " + JSON.stringify(prevProps) + " -- " + JSON.stringify(prevState)
-    // );
-    // console.log(
-    //   "log didupdate this " + JSON.stringify(this.props) + " -- " + JSON.stringify(this.state)
-    // );
-  }
-
   _fetchData() {
     var slicePieData = [];
     var sliceData = [];
     this.props.debugers.map(debuger => {
       var propertyName = debuger.alias;
-      NetClient.netPost(
-        global.tt_constant.net_url_projectbugschart,
+      FetchData.fetchLinechartDataForPermember(
         {
           uid: debuger.user_id,
           project_id: this.props.projectId,
           debugger_ids: [debuger.user_id]
         },
         response => {
-          if (response.msg.code === 0) {
+          if (response.code === 0) {
             var per_count = 0;
             if (sliceData.length === 0) {
               sliceData = response.chart.map((yvalue, idx) => {
@@ -102,6 +75,9 @@ export default class Report extends React.Component {
     console.log(
       "projectlinechart didmount " + JSON.stringify(this.props.debugers)
     );
+    this.setState({
+      allLineChartData: this.props.allData
+    })
     this._fetchData();
   }
 

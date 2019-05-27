@@ -1,0 +1,29 @@
+/*
+ * @Author: Young
+ * DSHARP
+ * @flow 
+ * @Date: 2019-05-27 17:24:10 
+ * @Last Modified by: Young
+ * @Last Modified time: 2019-05-27 17:38:28
+ */
+
+.projectDiv {
+  /* background-color: lightblue; */
+  height: 150px;
+  /* border-color: lightgray; */
+  /* border-width: 1px; */
+  /* border-style: solid; */
+  margin-bottom: 15px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--normal-color);
+}
+
+.projectTitleDiv {
+  display: flex;
+  height: 30px;
+  align-items: center;
+  margin-left: 5px;
+  font-size: 15px;
+}
