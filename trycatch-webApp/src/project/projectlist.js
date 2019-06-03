@@ -4,7 +4,7 @@
  * @flow
  * @Date: 2019-05-27 16:49:26
  * @Last Modified by: Young
- * @Last Modified time: 2019-05-27 18:06:10
+ * @Last Modified time: 2019-06-03 12:40:51
  */
 import React from "react";
 import "./projectlist.css";
@@ -13,6 +13,7 @@ import sourceCodeImg from "../imgs/source-code.png";
 import memberImg from "../imgs/member.png";
 import settingImg from "../imgs/setting.png";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 export class ProjectList extends React.Component {
   constructor(props) {
@@ -24,11 +25,30 @@ export class ProjectList extends React.Component {
   }
 
   componentDidMount() {
-    FetchData.fetchProjectList(response => {
-      if (response.msg.code === 0)
+    FetchData.fetchProjectList().then(response => {
+      if (response.msg.code === 0) {
+        var sliceProjects = response.projects;
         this.setState({
-          projects: response.projects
+          projects: sliceProjects
         });
+        sliceProjects.map((project, index) => {
+          FetchData.fetchUserReceiverListOfProject({
+            project_id: project.project_id
+          }).then(res => {
+            if (res.msg.code === 0) {
+              project["receive_from_list"] = res.receive_from_list.map(item => {
+                item["selected"] = true;
+                return item;
+              });
+
+              if (index === 0 && this.props.projectDidSelect !== undefined)
+                this.props.projectDidSelect(project);
+            }
+          });
+        });
+      } else {
+        this.props.projectDidSelect(null);
+      }
     });
   }
 
@@ -36,6 +56,9 @@ export class ProjectList extends React.Component {
     this.setState({
       selectedIdx: index
     });
+    if (this.props.projectDidSelect !== undefined) {
+      this.props.projectDidSelect(item);
+    }
   }
 
   render() {
@@ -113,3 +136,8 @@ export class ProjectList extends React.Component {
     });
   }
 }
+
+ProjectList.PropTypes = {
+  // noneMemberNotify: PropTypes.func,
+  projectDidSelect: PropTypes.func
+};
