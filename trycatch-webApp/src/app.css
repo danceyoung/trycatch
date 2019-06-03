@@ -4,7 +4,7 @@
  * @flow 
  * @Date: 2018-05-31 16:26:22 
  * @Last Modified by: Young
- * @Last Modified time: 2019-05-16 10:18:37
+ * @Last Modified time: 2019-05-27 17:25:20
  */
 
 .superDiv {
@@ -36,19 +36,6 @@
   width: 670px;
   /* background-color: bisque; */
   margin-left: 30px;
-}
-
-.projectDiv {
-  /* background-color: lightblue; */
-  height: 150px;
-  /* border-color: lightgray; */
-  /* border-width: 1px; */
-  /* border-style: solid; */
-  margin-bottom: 15px;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  background-color: var(--normal-color);
 }
 
 .projectHeaderDiv {
