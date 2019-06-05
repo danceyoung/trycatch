@@ -4,7 +4,7 @@
  * @flow 
  * @Date: 2018-05-31 16:26:22 
  * @Last Modified by: Young
- * @Last Modified time: 2019-05-27 17:25:20
+ * @Last Modified time: 2019-06-04 11:47:57
  */
 
 .superDiv {
@@ -55,24 +55,6 @@
   align-items: center;
   justify-content: center;
   border-radius: 3px;
-}
-
-.projectTitleDiv {
-  display: flex;
-  height: 30px;
-  align-items: center;
-  margin-left: 5px;
-  font-size: 15px;
-}
-
-.projectOtherInfoDiv {
-  display: flex;
-  height: 25px;
-  align-items: center;
-  margin-left: 5px;
-  margin-top: 5px;
-  color: gray;
-  font-size: 12px;
 }
 
 .sourceCode {
