@@ -4,7 +4,7 @@
  * @flow
  * @Date: 2018-04-23 15:31:55
  * @Last Modified by: Young
- * @Last Modified time: 2019-06-04 12:07:26
+ * @Last Modified time: 2019-06-05 14:52:01
  */
 import React from "react";
 import "./app.css";
@@ -45,66 +45,43 @@ export default class Main extends React.Component {
 
   componentDidMount() {
     console.log("params " + JSON.stringify(this.props));
-  }
-
-  _getBugSimpleLineChartsData(ele, idx) {
-    // console.log("getbugsimplelinechartsdata "+JSON.stringify(this.state.projects))
-    // this._getProjectMembers(ele.project_id, (projectId, debuggerids) => {
-    //   NetClient.netPost(
-    //     global.tt_constant.net_url_projectbugschart,
-    //     {
-    //       uid: ele.created_by,
-    //       project_id: projectId,
-    //       debugger_ids: debuggerids
-    //     },
-    //     res => {
-    //       if (res.msg.code === 0) {
-    //         var tempLineCharts = this.state.projectsSimpleLineCharts;
-    //         tempLineCharts[idx] = res.chart.map(ele => {
-    //           return { yvalue: ele };
-    //         });
-    //         this.setState({
-    //           projectsSimpleLineCharts: tempLineCharts
-    //         });
-    //         // console.log("linechart "+idx + JSON.stringify(res.chart))
-    //       }
-    //     }
-    //   );
-    // });
+    let paths = this.props.location.pathname.split("/");
+    if (paths[paths.length - 1] === "report") {
+      this.setState({
+        activityDivSelected: false
+      });
+    }
   }
 
   _getProjectBugs(projectId, debuggerids) {
-    FetchData.fetchProjectBugList(
-      {
-        project_id: projectId,
-        debugger_ids: debuggerids,
-        fetch_page: this.state.fetchPage
-      },
-      response => {
-        if (response.msg.code !== 0) {
-          if (response.msg.code === global.tt_constant.msg_no_more_code) {
-            if (this.state.fetchPage === 1) {
-              this.setState({
-                noBugsVisible: "visible",
-                noBugAlert: global.tt_constant.main_no_bugs
-              });
-            } else if (this.state.fetchPage > 1) {
-              this.setState({ noMoreBugsVisible: "visible" });
-            }
+    FetchData.fetchProjectBugList({
+      project_id: projectId,
+      debugger_ids: debuggerids,
+      fetch_page: this.state.fetchPage
+    }).then(response => {
+      if (response.msg.code !== 0) {
+        if (response.msg.code === global.tt_constant.msg_no_more_code) {
+          if (this.state.fetchPage === 1) {
+            this.setState({
+              noBugsVisible: "visible",
+              noBugAlert: global.tt_constant.main_no_bugs
+            });
+          } else if (this.state.fetchPage > 1) {
+            this.setState({ noMoreBugsVisible: "visible" });
           }
-        } else {
-          // console.log(JSON.stringify(response.receivefromlist))
-          this.setState(state => {
-            return {
-              selectedProjectBugs: state.selectedProjectBugs.concat(
-                response.bugs
-              ),
-              fetchPage: state.fetchPage + 1
-            };
-          });
         }
+      } else {
+        // console.log(JSON.stringify(response.receivefromlist))
+        this.setState(state => {
+          return {
+            selectedProjectBugs: state.selectedProjectBugs.concat(
+              response.bugs
+            ),
+            fetchPage: state.fetchPage + 1
+          };
+        });
       }
-    );
+    });
   }
 
   async _debugerOnClick(event, debuger) {
@@ -190,6 +167,7 @@ export default class Main extends React.Component {
   }
 
   render() {
+    console.log(this.state.activityDivSelected);
     return (
       <div className="superDiv">
         <Header settingVisible={"visible"} ttd={this.state.ttd} />
