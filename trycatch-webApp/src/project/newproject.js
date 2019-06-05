@@ -4,13 +4,13 @@
  * @flow 
  * @Date: 2018-06-06 14:23:05 
  * @Last Modified by: Young
- * @Last Modified time: 2018-10-24 14:31:25
+ * @Last Modified time: 2019-06-05 14:59:29
  */
 import React from "react";
 import { Link } from "react-router-dom";
 import "./newproject.css";
 import "../constant";
-import NetClient from "../network/netclient";
+import FetchData from "../network/fetchData";
 import Utils from "../utils/utils";
 import trashImg from "../imgs/trash.png";
 import notifyImg from "../imgs/notify.png";
@@ -88,22 +88,18 @@ export default class NewProject extends React.Component {
     // e.stopPropagation();
     if (this.state.members.length === 0) return;
     // console.log("saving project newed")
-    NetClient.netPost(
-      global.tt_constant.net_url_newproject,
-      {
-        project_name: this.state.projectName,
-        language: this.state.projectLanguage,
-        created_by: this.state.ttd,
-        members: this.state.members
-      },
-      response => {
-        if (response.msg.code !== 0) {
-          this.setState({ alertInfo: response.msg.content });
-        } else {
-          this.props.history.goBack();
-        }
+    FetchData.newProject({
+      project_name: this.state.projectName,
+      language: this.state.projectLanguage,
+      created_by: this.state.ttd,
+      members: this.state.members
+    }).then(response => {
+      if (response.msg.code !== 0) {
+        this.setState({ alertInfo: response.msg.content });
+      } else {
+        this.props.history.goBack();
       }
-    );
+    });
   }
 
   _onProjectNameChange(event) {
