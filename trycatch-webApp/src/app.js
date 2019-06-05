@@ -4,7 +4,7 @@
  * @flow
  * @Date: 2018-04-23 15:31:55
  * @Last Modified by: Young
- * @Last Modified time: 2019-05-28 15:32:42
+ * @Last Modified time: 2019-06-04 12:07:26
  */
 import React from "react";
 import "./app.css";
@@ -135,6 +135,40 @@ export default class Main extends React.Component {
     );
   }
 
+  _projectDidSelect(project) {
+    if (project !== null) {
+      this.setState({ selectedProject: project });
+      if (project.receive_from_list.length === 0) {
+        this.setState({
+          noBugsVisible: "visible",
+          noBugAlert: global.tt_constant.noneMember,
+          selectedProjectReceiveFromList: [],
+          selectedProjectBugs: []
+        });
+      } else {
+        this.setState({
+          noBugsVisible: "hidden"
+        });
+        this.setState(
+          () => {
+            return {
+              selectedProjectBugs: [],
+              fetchPage: 1
+            };
+          },
+          () => {
+            this._getProjectBugs(
+              project.project_id,
+              project.receive_from_list.map(item => {
+                return item["user_id"];
+              })
+            );
+          }
+        );
+      }
+    }
+  }
+
   _tabOnClick(event, tabIndex) {
     this.setState({ activityDivSelected: tabIndex === 0 ? true : false });
     // if (tabIndex === 1) {
@@ -175,39 +209,7 @@ export default class Main extends React.Component {
                     </Link>
                   </div>
                   <ProjectList
-                    projectDidSelect={result => {
-                      if (result !== null) {
-                        this.setState({ selectedProject: result });
-                        if (result.receive_from_list.length === 0) {
-                          this.setState({
-                            noBugsVisible: "visible",
-                            noBugAlert: global.tt_constant.noneMember,
-                            selectedProjectReceiveFromList: [],
-                            selectedProjectBugs: []
-                          });
-                        } else {
-                          this.setState({
-                            noBugsVisible: "hidden"
-                          });
-                          this.setState(
-                            () => {
-                              return {
-                                selectedProjectBugs: [],
-                                fetchPage: 1
-                              };
-                            },
-                            () => {
-                              this._getProjectBugs(
-                                result.project_id,
-                                result.receive_from_list.map(item => {
-                                  return item["user_id"];
-                                })
-                              );
-                            }
-                          );
-                        }
-                      }
-                    }}
+                    projectDidSelect={result => this._projectDidSelect(result)}
                   />
                 </div>
 
@@ -374,18 +376,7 @@ export default class Main extends React.Component {
                   <Route
                     path={`${match.url}/report`}
                     component={() => (
-                      <PReport
-                        projectId={
-                          this.state.projects[this.state.selectedProjectIdx]
-                            .project_id
-                        }
-                        debugers={this.state.selectedProjectReceiveFromList}
-                        allData={
-                          this.state.projectsSimpleLineCharts[
-                            this.state.selectedProjectIdx
-                          ]
-                        }
-                      />
+                      <PReport project={this.state.selectedProject} />
                     )}
                   />
                   <Route
