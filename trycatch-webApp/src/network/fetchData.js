@@ -4,7 +4,7 @@
  * @flow
  * @Date: 2019-05-27 15:38:40
  * @Last Modified by: Young
- * @Last Modified time: 2019-05-31 14:24:36
+ * @Last Modified time: 2019-06-04 17:27:58
  */
 import NetClient from "./netclient.js";
 
@@ -31,7 +31,7 @@ export default class FetchData {
           global.tt_constant.net_url_receivefromlist,
           body
         ).then(response => {
-          resolve(response)
+          resolve(response);
         });
       }
     });
@@ -51,18 +51,13 @@ export default class FetchData {
     }
   }
 
-  static fetchLinechartDataForPermember(body, callback) {
-    NetClient.netPost(global.tt_constant.net_url_projectbugschart, {
-      uid: body.userid,
-      project_id: body.projectid,
-      debugger_ids: [body.debugerids]
-    }).then(response => {
-      if (callback !== undefined) {
-        callback({
-          code: response.msg.code,
-          data: response.chart
-        });
-      }
+  static fetchLinechartData(body) {
+    return new Promise((resolve, reject) => {
+      NetClient.netPost(global.tt_constant.net_url_projectbugschart, body).then(
+        response => {
+          resolve(response);
+        }
+      );
     });
   }
 }
