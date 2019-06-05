@@ -4,16 +4,16 @@
  * @flow 
  * @Date: 2019-05-27 17:24:10 
  * @Last Modified by: Young
- * @Last Modified time: 2019-05-27 17:38:28
+ * @Last Modified time: 2019-06-04 11:49:56
  */
 
 .projectDiv {
   /* background-color: lightblue; */
-  height: 150px;
+  height: 80px;
   /* border-color: lightgray; */
   /* border-width: 1px; */
   /* border-style: solid; */
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -26,4 +26,14 @@
   align-items: center;
   margin-left: 5px;
   font-size: 15px;
+}
+
+.projectOtherInfoDiv {
+  display: flex;
+  height: 25px;
+  align-items: center;
+  margin-left: 5px;
+  margin-top: 25px;
+  color: gray;
+  font-size: 12px;
 }
