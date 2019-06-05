@@ -4,7 +4,7 @@
  * @flow
  * @Date: 2019-05-13 11:27:07
  * @Last Modified by: Young
- * @Last Modified time: 2019-05-27 16:14:53
+ * @Last Modified time: 2019-06-05 10:54:58
  */
 import React from "react";
 import {
@@ -22,8 +22,10 @@ import {
 import FetchData from "../network/fetchData";
 
 export default class Report extends React.Component {
+  
   constructor(props) {
     super(props);
+    // this.abortControllers = [];
     this.state = {
       multipleLineChartData: [],
       pieChartData: [],
@@ -31,67 +33,66 @@ export default class Report extends React.Component {
     };
   }
 
+  componentWillUnmount() {
+    // this.abortControllers.map(aborter => aborter.abort());
+  }
+
   _fetchData() {
     var slicePieData = [];
     var sliceData = [];
-    this.props.debugers.map(debuger => {
+    var sliceAllData = [];
+    this.props.project.receive_from_list.map((debuger, index) => {
+      // var abort = new AbortController()
+      // this.abortControllers.push(abort.signal);
       var propertyName = debuger.alias;
-      FetchData.fetchLinechartDataForPermember(
-        {
-          uid: debuger.user_id,
-          project_id: this.props.projectId,
-          debugger_ids: [debuger.user_id]
-        },
-        response => {
-          if (response.code === 0) {
-            var per_count = 0;
-            if (sliceData.length === 0) {
-              sliceData = response.chart.map((yvalue, idx) => {
-                per_count = per_count + yvalue;
-                var obj = {};
-                obj[propertyName] = yvalue;
-                return obj;
-              });
-            } else {
-              response.chart.map((yvalue, idx) => {
-                per_count = per_count + yvalue;
-                sliceData[idx][propertyName] = yvalue;
-              });
-            }
+      FetchData.fetchLinechartData({
+        uid: debuger.user_id,
+        project_id: this.props.project.project_id,
+        debugger_ids: [debuger.user_id]
+      }).then(response => {
+        if (response.msg.code === 0) {
+          sliceAllData.push(response.chart);
+          var per_count = 0;
+          if (sliceData.length === 0) {
+            sliceAllData = response.chart;
+            sliceData = response.chart.map((yvalue, idx) => {
+              per_count = per_count + yvalue;
+              var obj = {};
+              obj[propertyName] = yvalue;
+              return obj;
+            });
+          } else {
+            response.chart.map((yvalue, idx) => {
+              sliceAllData[idx] = sliceAllData[idx] + yvalue;
+              per_count = per_count + yvalue;
+              sliceData[idx][propertyName] = yvalue;
+            });
+          }
 
-            slicePieData.push({ name: propertyName, value: per_count });
+          slicePieData.push({ name: propertyName, value: per_count });
 
+          this.setState({
+            multipleLineChartData: sliceData,
+            pieChartData: slicePieData
+          });
+          if (index === this.props.project.receive_from_list.length - 1) {
+            var tempSliceAllData = sliceAllData.map(value => {
+              return { yvalue: value };
+            });
             this.setState({
-              multipleLineChartData: sliceData,
-              pieChartData: slicePieData
+              allLineChartData: tempSliceAllData
             });
           }
         }
-      );
+      });
     });
   }
 
   componentDidMount() {
-    console.log(
-      "projectlinechart didmount " + JSON.stringify(this.props.debugers)
-    );
-    this.setState({
-      allLineChartData: this.props.allData
-    })
     this._fetchData();
   }
 
   render() {
-    console.log(
-      "log this " +
-        JSON.stringify(this.props) +
-        " -- " +
-        JSON.stringify(this.state)
-    );
-    // console.log(
-    //   "projectlinechart render: " + JSON.stringify(this.state.multipleLineChartData)
-    // );
-    // console.log("projectpiechart: " + JSON.stringify(this.state.pieChartData));
     return (
       <div style={{ display: "flex", flex: 1, flexDirection: "column" }}>
         <LineChart
@@ -170,7 +171,7 @@ export default class Report extends React.Component {
               }}
             />
             <Legend verticalAlign={"top"} height={40} />
-            {this.props.debugers.map((debuger, idx) => {
+            {this.props.project.receive_from_list.map((debuger, idx) => {
               return (
                 <Line
                   key={debuger.user_id}
@@ -207,7 +208,7 @@ export default class Report extends React.Component {
                   key={`cell-${index}`}
                   fill={
                     global.tt_constant.linechart_colors[
-                      this.props.debugers.findIndex(
+                      this.props.project.receive_from_list.findIndex(
                         ele => ele.alias === entry.name
                       )
                     ]
