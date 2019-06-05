@@ -4,7 +4,7 @@
  * @flow
  * @Date: 2019-05-27 16:49:26
  * @Last Modified by: Young
- * @Last Modified time: 2019-06-04 14:52:00
+ * @Last Modified time: 2019-06-05 13:04:11
  */
 import React from "react";
 import "./projectlist.css";
@@ -14,6 +14,7 @@ import memberImg from "../imgs/member.png";
 import settingImg from "../imgs/setting.png";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import Utils from "../utils/utils.js"
 
 export class ProjectList extends React.Component {
   constructor(props) {
@@ -95,7 +96,7 @@ export class ProjectList extends React.Component {
               }}
             >
               <Link
-                to={`/project/edit/${this.state.ttd}/${project.project_id}`}
+                to={`/project/edit/${Utils.getUID()}/${project.project_id}`}
               >
                 <img className="settingImg" src={settingImg} alt="" />
               </Link>
