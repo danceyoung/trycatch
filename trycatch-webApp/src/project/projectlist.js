@@ -4,7 +4,7 @@
  * @flow
  * @Date: 2019-05-27 16:49:26
  * @Last Modified by: Young
- * @Last Modified time: 2019-06-03 12:40:51
+ * @Last Modified time: 2019-06-04 14:52:00
  */
 import React from "react";
 import "./projectlist.css";
@@ -56,6 +56,9 @@ export class ProjectList extends React.Component {
     this.setState({
       selectedIdx: index
     });
+    if (item.receive_from_list === undefined) {
+      return
+    }
     if (this.props.projectDidSelect !== undefined) {
       this.props.projectDidSelect(item);
     }
@@ -80,39 +83,6 @@ export class ProjectList extends React.Component {
           onClick={event => this._projectItemOnClick(event, project, idx)}
         >
           <div className="projectTitleDiv">{project.project_name}</div>
-          <div
-            style={{
-              // backgroundColor: "lightgray",
-              display: "flex",
-              flex: 1
-            }}
-          >
-            {/* <LineChart
-              width={300}
-              height={100}
-              data={this.state.projectsSimpleLineCharts[index]}
-              margin={{
-                top: 15,
-                right: 10,
-                left: 10,
-                bottom: 5
-              }}
-            >
-              <Line
-                type="monotone"
-                dataKey="yvalue"
-                stroke="lightgray"
-                dot={{ r: 2, fill: "gray" }}
-                label={{
-                  dy: -10,
-                  fill: "gray",
-                  fontSize: 9,
-                  textAnchor: "middle"
-                }}
-              />
-            </LineChart> */}
-          </div>
-
           <div className="projectOtherInfoDiv">
             <img className="sourceCodeImg" src={sourceCodeImg} alt="" />
             <div className="sourceCode">{project.source_code}</div>
@@ -137,7 +107,7 @@ export class ProjectList extends React.Component {
   }
 }
 
-ProjectList.PropTypes = {
+ProjectList.propTypes = {
   // noneMemberNotify: PropTypes.func,
   projectDidSelect: PropTypes.func
 };
